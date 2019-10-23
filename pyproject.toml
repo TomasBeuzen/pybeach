@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pydune"
+version = "0.1.0"
+description = ""
+authors = ["Tomas Beuzen <tomas.beuzen@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^2.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
