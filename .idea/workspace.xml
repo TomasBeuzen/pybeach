@@ -4,7 +4,11 @@
     <list default="true" id="feb0eac3-016c-4e71-8f51-121f011d2609" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/figure_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/figure_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/example.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper.bib" beforeDir="false" afterPath="$PROJECT_DIR$/paper.bib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/paper.md" beforeDir="false" afterPath="$PROJECT_DIR$/paper.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pydune/classifiers/SR04_clf.joblib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pydune/classifiers/SR04_train_clf.joblib" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,6 +160,7 @@
       <workItem from="1571758990750" duration="1000" />
       <workItem from="1571804119783" duration="1329000" />
       <workItem from="1571853335358" duration="16000" />
+      <workItem from="1572045882787" duration="462000" />
     </task>
     <servers />
   </component>
@@ -167,7 +172,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
