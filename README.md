@@ -14,7 +14,7 @@
 See the [*pydune* paper](paper.md) for more details.
 
 ## Usage
-```sh
+```python
 from pydune import Profile
 
 # example data
