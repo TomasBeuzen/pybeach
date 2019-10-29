@@ -58,10 +58,6 @@ class Profile:
         assert isinstance(window_size, int) & \
                (window_size > 0) & \
                (window_size < len(x)), f'window_size must be int between 0 and {len(x)}.'
-        flag = np.polyfit(x, z.T, 1)[0]
-        if np.any(flag > 0):
-            raise Warning(f'Input profiles should be oriented from landward (left) to seaward (right), '
-                          f'some inputted profiles appear to have the sea on the left. This may cause errors.')
 
         # Ensure inputs are row vectors
         x = np.atleast_1d(x)
@@ -75,6 +71,10 @@ class Profile:
 
         # Interp nan values
         z = ds.interp_nan(x, z)
+        flag = np.polyfit(x, z.T, 1)[0]
+        if np.any(flag > 0):
+            raise Warning(f'Input profiles should be oriented from landward (left) to seaward (right), '
+                          f'some inputted profiles appear to have the sea on the left. This may cause errors.')
 
         # Interp to 0.5 m grid
         self.x_interp = np.arange(np.min(x), np.max(x) + 0.5, 0.5)
@@ -86,7 +86,7 @@ class Profile:
         # Store transformed inputs
         self.z_interp = z
 
-    def predict_dunetoe_ml(self, clf_name, no_of_output=1, dune_crest='rr', **kwargs):
+    def predict_dunetoe_ml(self, clf_name, no_of_output=1, dune_crest='max', **kwargs):
         """
         Predict dune toe location using a pre-trained machine learning (ml) classifier.
         See pydune/classifiers/create_classifier.py to create a classifier.
@@ -100,7 +100,7 @@ class Profile:
             directory. In-built options include "barrier", "embayed", "mixed".
         no_of_output : int, default 1
             Number of dune toes to return, ranked from most probable to least probable.
-        dune_crest : {'max', 'rr', int, None}, default 'rr'
+        dune_crest : {'max', 'rr', int, None}, default 'max'
             Method to identify the dune crest location. The region of the beach profile
             that the dune toe location is searched for is constrained to the region
             seaward of the dune crest.
@@ -112,7 +112,7 @@ class Profile:
                   the dune toe.
         **kwargs : arguments
             Additional arguments to pass to `self.predict_dunecrest()`. Keywords include
-            window, threshold, topo, water_level.
+            window_size, threshold, water_level.
 
         Returns
         -------
@@ -132,10 +132,10 @@ class Profile:
         # Define dune crest
         if dune_crest in ['max', 'rr']:
             for k in kwargs.keys():
-                if k not in ["window", "threshold", "topo", "water_level"]:
+                if k not in ["window_size", "threshold", "water_level"]:
                     raise Warning(f'{k} not a valid argument for predict_dunecrest()')
             kwargs = {k: v for k, v in kwargs.items()
-                  if k in ["window", "threshold", "topo", "water_level"]}
+                  if k in ["window_size", "threshold", "water_level"]}
             dune_crest_loc = self.predict_dunecrest(method=dune_crest, **kwargs)
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest)
@@ -180,7 +180,7 @@ class Profile:
 
         return dt_index, dt_probabilities
 
-    def predict_dunetoe_mc(self, dune_crest='rr', shoreline=True, window_size=None, **kwargs):
+    def predict_dunetoe_mc(self, dune_crest='max', shoreline=True, hanning_window=None, **kwargs):
         """
         Predict dune toe location based on profile curvature (mc). Based on
         Stockdon et al. (2007):
@@ -193,7 +193,7 @@ class Profile:
 
         Parameters
         ----------
-        dune_crest : {'max', 'rr', int, None}, default 'rr'
+        dune_crest : {'max', 'rr', int, None}, default 'max'
             Method to identify the dune crest location. The region of the beach profile
             that the dune toe location is searched for is constrained to the region
             seaward of the dune crest.
@@ -211,11 +211,11 @@ class Profile:
             False: do not use or find a shoreline location.
             int: integer specifying the location of the shoreline. Of size 1 or
                  self.z.shape[0].
-        window_size : int, default None
+        hanning_window : int, default None
             Size of Hanning window for additional smoothing of profile transect.
         **kwargs : arguments
             Additional arguments to pass to `predict_dunecrest()` and/or
-            `predict_shoreline()`. Keywords include window, threshold, topo, water_level.
+            `predict_shoreline()`. Keywords include window_size, threshold, water_level.
 
         Returns
         -------
@@ -223,20 +223,20 @@ class Profile:
             dune toe location.
 
         """
-        if window_size:
-            assert isinstance(window_size, int) & \
-                   (window_size > 0) & \
-                   (window_size < self.z_interp.shape[1]), f'no_of_outputs must be int between 0 and {self.z_interp.shape[1]}.'
-            window = np.divide(np.hanning(window_size), np.sum(np.hanning(window_size)))
+        if hanning_window:
+            assert isinstance(hanning_window, int) & \
+                   (hanning_window > 0) & \
+                   (hanning_window < self.z_interp.shape[1]), f'window_size must be int between 0 and {self.z_interp.shape[1]}.'
+            window = np.divide(np.hanning(hanning_window), np.sum(np.hanning(hanning_window)))
         else:
             window = 1
 
         if dune_crest in ['max', 'rr']:
             for k in kwargs.keys():
-                if k not in ["window", "threshold", "topo", "water_level"]:
+                if k not in ["window_size", "threshold", "water_level"]:
                     raise Warning(f'{k} not a valid argument for predict_dunecrest() or predict_shoreline()')
             kwargs = {k: v for k, v in kwargs.items()
-                      if k in ["window", "threshold", "topo", "water_level"]}
+                      if k in ["window_size", "threshold", "water_level"]}
             dune_crest_loc = self.predict_dunecrest(method=dune_crest, **kwargs)
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest)
@@ -249,7 +249,7 @@ class Profile:
 
         if shoreline == True:
             for k in kwargs.keys():
-                if k not in ["window", "threshold", "topo", "water_level"]:
+                if k not in ["window_size", "threshold", "water_level"]:
                     raise Warning(f'{k} not a valid argument for predict_dunecrest() or predict_shoreline()')
             kwargs = {k: v for k, v in kwargs.items()
                       if k in ["water_level"]}
@@ -277,7 +277,7 @@ class Profile:
 
         return dt_index
 
-    def predict_dunetoe_pd(self, dune_crest='rr', shoreline=True, **kwargs):
+    def predict_dunetoe_pd(self, dune_crest='max', shoreline=True, **kwargs):
         """
         Predict location of dune toe based as the location of maximum perpendicular
         distance (pd) from the line drawn between the dune crest and shoreline.
@@ -286,7 +286,7 @@ class Profile:
 
         Parameters
         ----------
-        dune_crest : {'max', 'rr', int, None}, default 'rr'
+        dune_crest : {'max', 'rr', int, None}, default 'max'
             Method to identify the dune crest location. The region of the beach profile
             that the dune toe location is searched for is constrained to the region
             seaward of the dune crest.
@@ -306,7 +306,7 @@ class Profile:
                  self.z.shape[0].
         **kwargs : arguments
             Additional arguments to pass to `predict_dunecrest()` and/or
-            `predict_shoreline()`. Keywords include window, threshold, topo, water_level.
+            `predict_shoreline()`. Keywords include window_size, threshold, water_level.
 
         Returns
         -------
@@ -316,10 +316,10 @@ class Profile:
         """
         if dune_crest in ['max', 'rr']:
             for k in kwargs.keys():
-                if k not in ["window", "threshold", "topo", "water_level"]:
+                if k not in ["window_size", "threshold", "water_level"]:
                     raise Warning(f'{k} not a valid argument for predict_dunecrest() or predict_shoreline()')
             kwargs = {k: v for k, v in kwargs.items()
-                      if k in ["window", "threshold", "topo", "water_level"]}
+                      if k in ["window_size", "threshold", "water_level"]}
             dune_crest_loc = self.predict_dunecrest(method=dune_crest, **kwargs)
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest).astype(int)
@@ -332,7 +332,7 @@ class Profile:
 
         if shoreline == True:
             for k in kwargs.keys():
-                if k not in ["window", "threshold", "topo", "water_level"]:
+                if k not in ["window_size", "threshold", "water_level"]:
                     raise Warning(f'{k} not a valid argument for predict_dunecrest() or predict_shoreline()')
             kwargs = {k: v for k, v in kwargs.items()
                       if k in ["water_level"]}
@@ -360,7 +360,7 @@ class Profile:
 
         return dt_index.astype(int)
 
-    def predict_dunetoe_rr(self, window_size=11, threshold=0.2, water_level=0):
+    def predict_dunetoe_rr(self, window_size=21, threshold=0.2, water_level=0):
         """
         Predict dune toe location based on relative relief (rr). Based on
         Wernette et al. (2016):
@@ -373,7 +373,7 @@ class Profile:
 
         Parameters
         ----------
-        window_size : int, default 11
+        window_size : int, default 21
             Size of window for calculating relative relief. May be int or list of ints.
             If a list is passed, relative relief is calculated for each window size and
             averaged. See Wernette et al. (2016) for further details.
@@ -391,9 +391,16 @@ class Profile:
             dune toe location.
 
         """
-        assert isinstance(window_size, int) & \
-               (window_size > 0) & \
-               (window_size < len(self.x)), f'no_of_outputs must be int between 0 and {len(self.x)}.'
+        if isinstance(window_size, int):
+            assert isinstance(window_size, int) & \
+                   (window_size > 0) & \
+                   (window_size < self.z_interp.shape[
+                       1]), f'window_size must be int between 0 and {self.z_interp.shape[1]}.'
+        elif isinstance(window_size, list):
+            assert all(isinstance(_, int) & (_ > 0) & (_ < self.z_interp.shape[1]) for _ in
+                       window_size), f'window_size must be int between 0 and {self.z_interp.shape[1]}.'
+        else:
+            raise ValueError(f'window_size must bt of type int or list.')
         assert isinstance(threshold, (int, float)) & \
                (threshold > 0 and threshold < 1), f'threshold should be number between 0 and 1, but {threshold} was passed.'
         assert isinstance(water_level, (int, float)), f'water_level should be a number, but {water_level} was passed.'
@@ -414,7 +421,7 @@ class Profile:
         dt_index = ds.interp_toe_to_grid(self.x_interp, self.x, dt_index)
         return dt_index
 
-    def predict_dunecrest(self, method="max", window_size=50, threshold=0.8, water_level=0):
+    def predict_dunecrest(self, method="max", window_size=21, threshold=0.8, water_level=0):
         """
         Find location of dune crest.
 
@@ -428,7 +435,7 @@ class Profile:
             seaward of the dune crest.
             max: the maximum elevation of the cross-shore profile.
             rr: dune crest calculated based on relative relief.
-        window_size : int, default 50
+        window_size : int, default 21
             Only valid for method "rr". Size of window for calculating relative relief.
             May be int or list of ints. If a list is passed, relative relief is
             calculated for each window size and averaged.
@@ -449,9 +456,14 @@ class Profile:
         if method == "max":
             dc_index = np.array([np.argmax(row) for row in self.z_interp])
         elif method == "rr":
-            assert isinstance(window_size, int) & \
-                   (window_size > 0) & \
-                   (window_size < self.z_interp.shape[1]), f'no_of_outputs must be int between 0 and {self.z_interp.shape[1]}.'
+            if isinstance(window_size, int):
+                assert isinstance(window_size, int) & \
+                       (window_size > 0) & \
+                       (window_size < self.z_interp.shape[1]), f'window_size must be int between 0 and {self.z_interp.shape[1]}.'
+            elif isinstance(window_size, list):
+                assert all(isinstance(_, int) & (_ > 0) & (_ < self.z_interp.shape[1]) for _ in window_size), f'window_size must be int between 0 and {self.z_interp.shape[1]}.'
+            else:
+                raise ValueError(f'window_size must bt of type int or list.')
             assert isinstance(threshold, (int, float)) & \
                    (0 < threshold < 1), f'threshold should be number between 0 and 1, but {threshold} was passed.'
             assert isinstance(water_level, (int, float)), f'water_level should be a number, but {water_level} was passed.'
@@ -473,7 +485,7 @@ class Profile:
         dc_index = ds.interp_toe_to_grid(self.x_interp, self.x, dc_index.astype(int))
         return dc_index
 
-    def predict_shoreline(self, water_level=0, dune_crest='rr', **kwargs):
+    def predict_shoreline(self, water_level=0, dune_crest='max', **kwargs):
         """
         Find location of the shoreline.
 
@@ -485,7 +497,7 @@ class Profile:
             Elevation of mean water level, profile elevations at or below mean water
             level elevation are set to NaN to ensure stability of relative relief
             calculations.  See Wernette et al. (2016) for further details.
-        dune_crest : {'max', 'rr', int, None}, default 'rr'
+        dune_crest : {'max', 'rr', int, None}, default 'max'
             Method to identify the dune crest location. The region of the beach profile
             that the dune toe location is searched for is constrained to the region
             seaward of the dune crest.
@@ -495,6 +507,9 @@ class Profile:
                  self.z.shape[0].
             None: do not calculate a dune crest location. Search the whole profile for
                   the dune toe.
+        **kwargs : arguments
+            Additional arguments to pass to `predict_dunecrest()`. Keywords include
+            window_size, threshold, water_level.
 
         Returns
         -------
@@ -505,10 +520,10 @@ class Profile:
         assert isinstance(water_level, (int, float)), f'water_level should be a number, but {water_level} was passed.'
         if dune_crest in ['max', 'rr']:
             for k in kwargs.keys():
-                if k not in ["window", "threshold", "topo", "water_level"]:
+                if k not in ["window", "threshold", "water_level"]:
                     raise Warning(f'{k} not a valid argument for predict_dunecrest() or predict_shoreline()')
             kwargs = {k: v for k, v in kwargs.items()
-                      if k in ["window", "threshold", "topo", "water_level"]}
+                      if k in ["window", "threshold", "water_level"]}
             dune_crest_loc = self.predict_dunecrest(method=dune_crest, **kwargs)
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest)

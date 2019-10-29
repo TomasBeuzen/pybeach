@@ -20,7 +20,7 @@ def models():
                    np.linspace(2, 0, 91)[1:],
                    np.zeros((20,))))
 
-    toe = np.array([50])
+    toe = np.array([51])
     crest = np.array([38])
     shoreline = np.array([140])
     pydune1d = Profile(x, z)
@@ -41,8 +41,10 @@ class Testpydune(object):
 
     def test_predict_dunetoe_ml(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
-        assert pydune1d.predict_dunetoe_ml('SR04_clf')[0] == approx(toe, abs=10)
-        assert pydune2d.predict_dunetoe_ml('SR04_clf')[0] == approx(np.hstack((toe, toe)), abs=10)
+        assert pydune1d.predict_dunetoe_ml('barrier_island_clf')[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_ml('wave_embayed_clf')[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_ml('mixed_clf')[0] == approx(toe, abs=10)
+        # assert pydune2d.predict_dunetoe_ml('SR04_clf')[0] == approx(np.hstack((toe, toe)), abs=10)
 
     def test_predict_dunetoe_mc(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
