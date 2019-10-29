@@ -17,13 +17,17 @@ See the [*pydune* paper](paper.md) for more details.
 ```sh
 from pydune import Profile
 
+# example data
 x = np.arange(0, 80, 0.5)
 z = np.concatenate((np.linspace(4, 5, 40),
                     np.linspace(5, 2, 10),
                     np.linspace(2, 0, 91)[1:],
                     np.linspace(0, -1, 20)))
-                    
+
+# instantiate
 p = Profile(x, z)
+
+# predict dune toe, dune crest, shoreline location
 toe_ml, prob_ml = p.predict_dunetoe_ml('wave_embayed_clf')  # predict toe using machine learning model
 toe_mc = p.predict_dunetoe_mc()    # predict toe using maximum curvature method (Stockdon et al, 2007)
 toe_rr = p.predict_dunetoe_rr()    # predict toe using relative relief method (Wernette et al, 2016)
