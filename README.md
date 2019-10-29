@@ -24,12 +24,12 @@ z = np.concatenate((np.linspace(4, 5, 40),
                     np.linspace(0, -1, 20)))
                     
 p = Profile(x, z)
-toe_ml, prob_ml = p.predict_dunetoe_ml('wave_embayed_clf') # predict toe using machine learning model
-toe_mc = p.predict_dunetoe_mc() # predict toe using maximum curvature method (Stockdon et al, 2007)
-toe_rr = p.predict_dunetoe_rr() # predict toe using relative relief method (Wernette et al, 2016)
-toe_pd = p.predict_dunetoe_pd() # predict toe using perpendicular distance method
-crest = p.predict_dunecrest() # predict dune crest
-shoreline = p.predict_shoreline() # predict shoreline
+toe_ml, prob_ml = p.predict_dunetoe_ml('wave_embayed_clf')  # predict toe using machine learning model
+toe_mc = p.predict_dunetoe_mc()    # predict toe using maximum curvature method (Stockdon et al, 2007)
+toe_rr = p.predict_dunetoe_rr()    # predict toe using relative relief method (Wernette et al, 2016)
+toe_pd = p.predict_dunetoe_pd()    # predict toe using perpendicular distance method
+crest = p.predict_dunecrest()      # predict dune crest
+shoreline = p.predict_shoreline()  # predict shoreline
 ```
 
 See the [example notebook](https://github.com/TomasBeuzen/pydune/blob/master/example.ipynb) for more details.
