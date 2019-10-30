@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/TomasBeuzen/pydune.svg?branch=master)](https://travis-ci.org/TomasBeuzen/pydune)
+
 # **pydune**: A Python package for locating the dune toe on cross-shore beach profile transects.
 
 <div align="center">
