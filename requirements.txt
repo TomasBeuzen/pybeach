@@ -3,9 +3,6 @@ attrs==19.2.0
 certifi==2019.9.11
 importlib-metadata==0.23
 joblib==0.13.2
-mkl-fft==1.0.14
-mkl-random==1.1.0
-mkl-service==2.3.0
 more-itertools==7.2.0
 numpy==1.17.2
 packaging==19.2
