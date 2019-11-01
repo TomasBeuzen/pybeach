@@ -7,13 +7,13 @@
 </div>
 
 ## What is it?
-**pydune** is a python package for identifying dune toes on beach profile transects. It includes the following methods:
-  - Machine learning
-  - Maximum curvature (Stockdon et al, 2007)
-  - Relative relief (Wernette et al, 2016)
-  - Perpendicular distance
-
-See the [*pydune* paper](paper.md) for more details.
+**pydune** is a python package for identifying dune toes on 2D beach profile transects. It includes the following methods:
+  - Machine learning; 
+  - Maximum curvature (Stockdon et al, 2007); 
+  - Relative relief (Wernette et al, 2016); and,
+  - Perpendicular distance.
+  
+In addition, **pydune** contains methods for identifying the shoreline position and dune crest position on 2D beach profile transects. See the [*pydune* paper](paper.md) for more details about **pydune**.
 
 ## Usage
 ```python
