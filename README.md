@@ -41,6 +41,9 @@ shoreline = p.predict_shoreline()  # predict shoreline
 
 See the [example notebook](https://github.com/TomasBeuzen/pydune/blob/master/example.ipynb) for more details.
 
+## Documentation
+Read the **pydune** documentation [here](https://pydune-tomasbeuzen.readthedocs.io/en/latest/?badge=latest).
+
 ## Questions, Comments, Suggestions
 Do you have a question that needs answering? Have you found an issue with the code and need to get it fixed? Or perhaps you're looking to contribute to the code and have ideas for how it could be improved. In all cases, please see the [Issues](https://github.com/TomasBeuzen/pydune/issues) page.
 
