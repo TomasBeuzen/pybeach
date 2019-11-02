@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/TomasBeuzen/pydune.svg?branch=master)](https://travis-ci.org/TomasBeuzen/pydune)
 [![Documentation Status](https://readthedocs.org/projects/pydune-tomasbeuzen/badge/?version=latest)](https://pydune-tomasbeuzen.readthedocs.io/en/latest/?badge=latest)
+[![Coverage Status](https://coveralls.io/repos/github/TomasBeuzen/pydune/badge.svg?branch=master)](https://coveralls.io/github/TomasBeuzen/pydune?branch=master)
 
 # **pydune**: A Python package for locating the dune toe on cross-shore beach profile transects.
 
