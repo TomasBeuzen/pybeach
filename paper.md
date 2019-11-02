@@ -57,7 +57,7 @@ morphology. Importantly, the methodology used to create the dune toe machine lea
 (described in Section [pydune](#pydune)) is an example of how machine learning can be usefully
 applied to geomorphic and Earth surface systems.
 
-![pydune-example-figure](docs/figure_1.png)*caption*
+![pydune-example-figure](docs/img/figure_1.png)*caption*
 
 # Statement of Need
 
@@ -139,7 +139,7 @@ points outside of the buffer zone. For each beach profile used for model trainin
 the one positive sample (i.e., the window centered around the true dune toe), a single negative
 sample was randomly extracted, resulting in equal numbers of positive and negative dune toe windows.
 
-![pydune-methodology-figure](docs/figure_2.png)*caption*
+![pydune-methodology-figure](docs/img/figure_2.png)*caption*
 
 These windows are simply vectors of elevation change (the features), associated with a label of 1
 (positive sample) or 0 (negative sample) (the class). A random forest classifier algorithm was used
@@ -161,7 +161,7 @@ unseen test data was quantified and compared to the other dune toe detection alg
 and Table Y show that the machine learning model outperformed the other classifiers on the unseen
 test data.
 
-![pydune-test-figure](docs/figure_3.png)*caption*
+![pydune-test-figure](docs/img/figure_3.png)*caption*
 
 |    |   MAE |   RMSE |   R2 |   MAE |   RMSE |   R2 |
 |:---|------:|-------:|-----:|------:|-------:|-----:|

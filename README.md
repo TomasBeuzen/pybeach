@@ -3,10 +3,10 @@
 # **pydune**: A Python package for locating the dune toe on cross-shore beach profile transects.
 
 <div align="center">
-  <img src="docs/figure_1.png" alt="pydune-example" width="700"/>
+  <img src="docs/img/figure_1.png" alt="pydune-example" width="700"/>
 </div>
 
-## What is it?
+## Background
 **pydune** is a python package for identifying dune toes on 2D beach profile transects. It includes the following methods:
   - Machine learning; 
   - Maximum curvature (Stockdon et al, 2007); 
