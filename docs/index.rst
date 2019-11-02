@@ -4,6 +4,10 @@ Welcome to pydune's documentation!
 .. image:: https://travis-ci.org/TomasBeuzen/pydune.svg?branch=master
         :target: https://travis-ci.org/TomasBeuzen/pydune
 
+.. image:: https://readthedocs.org/projects/pydune-tomasbeuzen/badge/?version=latest
+    :target: https://pydune-tomasbeuzen.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 **pydune** is a Python package for locating the dune toe on cross-shore beach profile transects. 
 
 .. image:: ./_static/figure_1.png
