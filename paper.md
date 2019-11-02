@@ -185,15 +185,26 @@ used as follows to make predictions of the dune toe location:
 ```python
 from pydune import Profile
 
+# Example data
+import numpy as np
+x = np.arange(0, 80, 0.5)
+z = np.concatenate((np.linspace(4, 5, 40),
+                    np.linspace(5, 2, 10),
+                    np.linspace(2, 0, 91)[1:],
+                    np.linspace(0, -1, 20)))
+
 # Instantiate Profile class
-p = Profile(x = x, z = z, seaward_direction = "right")
+pyd = Profile(x, z)
 
-# Make dune toe predictions
-toe_ml = p.predict_dunetoe_ml() # use the machine learning (ML) method
-toe_mc = p.predict_dunetoe_mc() # use the maximum curvature (MC) method
-toe_rr = p.predict_dunetoe_rr() # use the relative relief (RR) method
-toe_pd = p.predict_dunetoe_pd() # use the perpendicular distance (PD) method
+# Predict dune toe location
+toe_ml = pyd.predict_dunetoe_ml('wave_embayed_clf') # use the machine learning (ML) method
+toe_mc = pyd.predict_dunetoe_mc() # use the maximum curvature (MC) method
+toe_rr = pyd.predict_dunetoe_rr() # use the relative relief (RR) method
+toe_pd = pyd.predict_dunetoe_pd() # use the perpendicular distance (PD) method
 
+# (optional) Predict shoreline and dune crest location
+crest = pyd.predict_dunecrest()
+shoreline = pyd.predict_shoreline()
 ```
 
 The `pydune` source code can be found on [github](https://github.com/TomasBeuzen/pydune) along with

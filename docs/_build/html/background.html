@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Background &#8212; pydune 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to pydune’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pydune</a></h1>
+
+
+
+<p class="blurb">Dune toe location algorithms implemented in Python for coastal engineers and scientists.</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=TomasBeuzen&repo=pydune&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to pydune’s documentation!</a></li>
+      <li>Next: <a href="installation.html" title="next chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+<p>Dunes along sandy coastlines provide an important natural barrier to coastal hazards such as storm-induced waves and surge. The capacity of sandy dunes to provide coastal hazard protection depends in large part on their geometry. In particular, the location of the dune toe (the transition point between the beach and dune) is a key factor used in coastal erosion models and for assessing coastal vulnerability to hazards. <strong>pydune</strong> is a Python package for locating the dune toe on cross-shore beach profile transects. The aim of <em>pydune</em> is to collate commonly used algorithms for dune toe identification and to provide a new method of locating the dune toe based on machine learning.</p>
+<dl class="simple">
+<dt><strong>pydune</strong> currently includes the following methods for locating the dune toe on a cross-shore beach profile:</dt><dd><ul class="simple">
+<li><p>Machine learning;</p></li>
+<li><p>Maximum curvature (Stockdon et al, 2007) <a class="footnote-reference brackets" href="#sto07" id="id1">1</a>;</p></li>
+<li><p>Relative relief (Wernette et al, 2016) <a class="footnote-reference brackets" href="#wer16" id="id2">2</a>; and,</p></li>
+<li><p>Perpendicular distance.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See the <strong>pydune</strong> <a class="reference external" href="https://github.com/TomasBeuzen/pydune/blob/master/paper.md">paper</a> for more details of these methods.</p>
+<img alt="_images/figure_1.png" src="_images/figure_1.png" />
+<blockquote>
+<div><div class="line-block">
+<div class="line">Example application of <strong>pydune</strong>.</div>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="sto07"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Stockdon, H. F., Sallenger Jr, A. H., Holman, R. A., &amp; Howd, P. A.      “A simple model for the spatially-variable coastal response to hurricanes.”     Marine Geology, 238 (2007): 1-20. <a class="reference external" href="https://doi.org/10.1016/j.margeo.2006.11.004">https://doi.org/10.1016/j.margeo.2006.11.004</a></p>
+</dd>
+<dt class="label" id="wer16"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Wernette, P., Houser, C., &amp; Bishop, M. P. “An automated approach        for extracting Barrier Island morphology from digital elevation models.”        Geomorphology, 262 (2016): 1-7. <a class="reference external" href="https://doi.org/10.1016/j.geomorph.2016.02.024">https://doi.org/10.1016/j.geomorph.2016.02.024</a>.</p>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2019, Tomas Beuzen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/background.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

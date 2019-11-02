@@ -53,3 +53,19 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_sidebars = {
+    "**": ["globaltoc.html", "relations.html", "sourcelink.html", "searchbox.html"]
+}
+
+html_sidebars = {
+    "**": ["about.html", "navigation.html", "relations.html", "searchbox.html"]
+}
+
+html_theme_options = {
+    "description": "Dune toe location algorithms implemented in Python for coastal engineers and scientists.",
+    "github_user": "TomasBeuzen",
+    "github_repo": "pydune",
+    "fixed_sidebar": True,
+    "github_button": True,
+}
