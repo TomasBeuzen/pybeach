@@ -130,6 +130,11 @@ class TestpyduneFails(object):
             pydune1d.predict_dunecrest(method=1)
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
             pydune1d.predict_dunetoe_mc(shoreline='ok')
+            pydune1d.predict_dunecrest(method="rr", window_size='string')
+            pydune1d.predict_dunetoe_mc(shoreline='string')
+            pydune1d.predict_dunetoe_mc(dune_crest='bad_method')
+            pydune1d.predict_dunetoe_pd(shoreline='string')
+            pydune1d.predict_dunetoe_pd(dune_crest='bad_method')
         with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(window_size=-1)
             pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window=-1)
@@ -141,7 +146,7 @@ class TestpyduneFails(object):
             pydune1d.predict_dunetoe_ml('SR04_clf', -1)
             pydune1d.predict_dunecrest(method="rr", threshold=1.1)
             pydune1d.predict_dunecrest(method="rr", threshold=-0.1)
-            pydune1d.predict_dunecrest(window_size=-1)
+            pydune1d.predict_dunecrest(method="rr", window_size=-1)
         with raises(FileNotFoundError):
             pydune1d.predict_dunetoe_ml('bad_file_name')
 

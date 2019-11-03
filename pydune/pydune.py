@@ -473,7 +473,7 @@ class Profile:
             elif isinstance(window_size, list):
                 assert all(isinstance(_, int) & (_ > 0) & (_ < self.z_interp.shape[1]) for _ in window_size), f'window_size must be int between 0 and {self.z_interp.shape[1]}.'
             else:
-                raise ValueError(f'window_size must bt of type int or list.')
+                raise ValueError(f'window_size must be of type int or list.')
             assert isinstance(threshold, (int, float)) & \
                    (0 < threshold < 1), f'threshold should be number between 0 and 1, but {threshold} was passed.'
             assert isinstance(water_level, (int, float)), f'water_level should be a number, but {water_level} was passed.'
