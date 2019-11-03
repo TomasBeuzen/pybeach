@@ -123,13 +123,8 @@ class TestpyduneFails(object):
         pydune1d, _, _, _, _ = models
         with raises(Warning):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', bad_key_word=123)
-        with raises(Warning):
             pydune1d.predict_dunetoe_mc(bad_key_word=123)
-        with raises(Warning):
-            pydune1d.predict_dunetoe_rr(bad_key_word=123)
-        with raises(Warning):
             pydune1d.predict_dunetoe_pd(bad_key_word=123)
-        with raises(Warning):
             pydune1d.predict_shoreline(bad_key_word=123)
         with raises(ValueError):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
