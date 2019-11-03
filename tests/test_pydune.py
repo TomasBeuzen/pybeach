@@ -99,7 +99,8 @@ class Testpydune(object):
 class TestpyduneFails(object):
 
     def test_bad_input(self, data):
-        x, z1d, z2d, _ = data
+        x, z1d, z2d, toe2d = data
+        assert isinstance(Profile(x, z2d.T), Profile)  # test transposed data
         with raises(TypeError):  # no input
             Profile()
         with raises(TypeError):  # only one input
@@ -117,13 +118,18 @@ class TestpyduneFails(object):
         with raises(Warning):  # profiles with wrong orientation (sea on left)
             Profile(x, np.flipud(z1d))
 
+
     def test_bad_method_calls(self, models):
         pydune1d, _, _, _, _ = models
         with raises(Warning):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', bad_key_word=123)
+        with raises(Warning):
             pydune1d.predict_dunetoe_mc(bad_key_word=123)
+        with raises(Warning):
             pydune1d.predict_dunetoe_rr(bad_key_word=123)
+        with raises(Warning):
             pydune1d.predict_dunetoe_pd(bad_key_word=123)
+        with raises(Warning):
             pydune1d.predict_shoreline(bad_key_word=123)
         with raises(ValueError):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
