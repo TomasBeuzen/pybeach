@@ -56,6 +56,9 @@ class Testpydune(object):
         assert pydune1d.predict_dunetoe_mc(dune_crest=40)[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_mc(dune_crest=None)[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_mc(dune_crest=np.array([40]))[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_mc(shoreline=False) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_mc(shoreline=159) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_mc(shoreline=np.array([159])) == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_mc(dune_crest='rr') == approx(np.hstack((toe, toe)), abs=10)
         assert pydune1d.predict_dunetoe_mc(dune_crest='max') == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_mc(dune_crest='rr') == approx(np.hstack((toe, toe)), abs=10)
@@ -71,6 +74,9 @@ class Testpydune(object):
         assert pydune1d.predict_dunetoe_pd(dune_crest=40)[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_pd(dune_crest=None)[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_pd(dune_crest=np.array([40]))[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_pd(shoreline=False) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_pd(shoreline=159) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_pd(shoreline=np.array([159])) == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_pd(dune_crest='rr') == approx(np.hstack((toe, toe)), abs=10)
 
     def test_predict_dunecrest(self, models):
@@ -81,6 +87,9 @@ class Testpydune(object):
     def test_predict_shoreline(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
         assert pydune1d.predict_shoreline(dune_crest='max') == approx(shoreline, abs=10)
+        assert pydune1d.predict_shoreline(dune_crest=40)[0] == approx(shoreline, abs=10)
+        assert pydune1d.predict_shoreline(dune_crest=None)[0] == approx(shoreline, abs=10)
+        assert pydune1d.predict_shoreline(dune_crest=np.array([40]))[0] == approx(shoreline, abs=10)
         assert pydune2d.predict_shoreline(dune_crest='rr') == approx(np.hstack((shoreline, shoreline)), abs=10)
 
 
@@ -129,6 +138,7 @@ class TestpyduneFails(object):
             pydune1d.predict_dunetoe_ml('SR04_clf', -1)
             pydune1d.predict_dunecrest(method="rr", threshold=1.1)
             pydune1d.predict_dunecrest(method="rr", threshold=-0.1)
+            pydune1d.predict_dunecrest(window_size=-1)
         with raises(FileNotFoundError):
             pydune1d.predict_dunetoe_ml('bad_file_name')
 

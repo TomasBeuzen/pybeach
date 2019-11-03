@@ -262,7 +262,9 @@ class Profile:
             shoreline_loc = np.full((self.z_interp.shape[0],), -1)
         elif isinstance(shoreline, int):
             shoreline_loc = np.full((self.z_interp.shape[0],), shoreline)
-        elif len(shoreline) == self.z_interp.shape[0] & all(type(_) == int for _ in dune_crest):
+        elif len(shoreline) == self.z_interp.shape[0] & \
+             isinstance(shoreline, np.ndarray) & \
+             all(isinstance(_, np.int64) for _ in shoreline):
             shoreline_loc = shoreline
         else:
             raise ValueError(f'shoreline should be bool, or int (of size 1 or {self.z_interp.shape[0]})')
@@ -347,8 +349,10 @@ class Profile:
             shoreline_loc = np.full((self.z_interp.shape[0],), -1).astype(int)
         elif isinstance(shoreline, int):
             shoreline_loc = np.full((self.z_interp.shape[0],), shoreline).astype(int)
-        elif len(shoreline) == self.z_interp.shape[0] & all(type(_) == int for _ in dune_crest):
-            shoreline_loc = shoreline.astype(int)
+        elif len(shoreline) == self.z_interp.shape[0] & \
+             isinstance(shoreline, np.ndarray) & \
+             all(isinstance(_, np.int64) for _ in shoreline):
+            shoreline_loc = shoreline
         else:
             raise ValueError(f'shoreline should be bool, or int (of size 1 or {self.z_interp.shape[0]})')
 
