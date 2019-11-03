@@ -8,8 +8,10 @@ TO DO:
 """
 
 import numpy as np
+from sklearn.ensemble.forest import RandomForestClassifier
 from pytest import approx, raises, fixture
 from pydune.pydune import Profile
+from pydune.support import classifier_support as cs
 
 
 @fixture()
@@ -35,7 +37,8 @@ def data():
                      np.linspace(2, 0, 91)[1:],
                      np.zeros((20,))))
     z2d = np.vstack((z1d, z1d))
-    return x, z1d, z2d
+    toe2d = np.array([51, 51])
+    return x, z1d, z2d, toe2d
 
 class Testpydune(object):
 
@@ -96,7 +99,7 @@ class Testpydune(object):
 class TestpyduneFails(object):
 
     def test_bad_input(self, data):
-        x, z1d, z2d = data
+        x, z1d, z2d, _ = data
         with raises(TypeError):  # no input
             Profile()
         with raises(TypeError):  # only one input
@@ -142,3 +145,9 @@ class TestpyduneFails(object):
         with raises(FileNotFoundError):
             pydune1d.predict_dunetoe_ml('bad_file_name')
 
+
+class Testpyduneclassifier(object):
+
+    def test_make_classifier(self, data):
+        x, _, z2d, toe2d = data
+        assert isinstance(cs.create_classifier(x, z2d, toe2d), RandomForestClassifier)

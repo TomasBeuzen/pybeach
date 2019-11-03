@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="feb0eac3-016c-4e71-8f51-121f011d2609" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pydune/pydune.py" beforeDir="false" afterPath="$PROJECT_DIR$/pydune/pydune.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_pydune.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_pydune.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -160,7 +158,7 @@
       <workItem from="1572045882787" duration="462000" />
       <workItem from="1572103200997" duration="106000" />
       <workItem from="1572105948051" duration="3972000" />
-      <workItem from="1572740326306" duration="2883000" />
+      <workItem from="1572740326306" duration="3623000" />
     </task>
     <servers />
   </component>
