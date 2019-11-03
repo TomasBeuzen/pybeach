@@ -52,6 +52,10 @@ class Testpydune(object):
     def test_predict_dunetoe_mc(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
         assert pydune1d.predict_dunetoe_mc(dune_crest='max') == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window=3) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_mc(dune_crest=40)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_mc(dune_crest=None)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_mc(dune_crest=np.array([40]))[0] == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_mc(dune_crest='rr') == approx(np.hstack((toe, toe)), abs=10)
         assert pydune1d.predict_dunetoe_mc(dune_crest='max') == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_mc(dune_crest='rr') == approx(np.hstack((toe, toe)), abs=10)
@@ -64,6 +68,9 @@ class Testpydune(object):
     def test_predict_dunetoe_pd(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
         assert pydune1d.predict_dunetoe_pd(dune_crest='max') == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_pd(dune_crest=40)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_pd(dune_crest=None)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_pd(dune_crest=np.array([40]))[0] == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_pd(dune_crest='rr') == approx(np.hstack((toe, toe)), abs=10)
 
     def test_predict_dunecrest(self, models):
@@ -113,6 +120,8 @@ class TestpyduneFails(object):
             pydune1d.predict_dunetoe_mc(shoreline='ok')
         with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(window_size=-1)
+            pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window=-1)
+            pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window='string')
             pydune1d.predict_dunetoe_rr(window_size=-1)
             pydune1d.predict_dunetoe_rr(threshold=-1)
             pydune1d.predict_dunetoe_rr(water_level='1')

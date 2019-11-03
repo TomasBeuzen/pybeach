@@ -243,8 +243,10 @@ class Profile:
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest)
         elif dune_crest is None:
-            dune_crest_loc = np.zeros((self.z_interp.shape[0],))
-        elif len(dune_crest) == self.z_interp.shape[0] & all(type(_) == int for _ in dune_crest):
+            dune_crest_loc = np.full((self.z_interp.shape[0],), 0)
+        elif len(dune_crest) == self.z_interp.shape[0] & \
+             isinstance(dune_crest, np.ndarray) & \
+             all(isinstance(_, np.int64) for _ in dune_crest):
             dune_crest_loc = dune_crest
         else:
             raise ValueError(f'dune_crest should be "max", "rr", int (of size 1 or {self.z_interp.shape[0]}), or None')
@@ -326,8 +328,10 @@ class Profile:
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest).astype(int)
         elif dune_crest is None:
-            dune_crest_loc = np.zeros((self.z_interp.shape[0],)).astype(int)
-        elif len(dune_crest) == self.z_interp.shape[0] & all(type(_) == int for _ in dune_crest):
+            dune_crest_loc = np.full((self.z_interp.shape[0],), 0)
+        elif len(dune_crest) == self.z_interp.shape[0] & \
+             isinstance(dune_crest, np.ndarray) & \
+             all(isinstance(_, np.int64) for _ in dune_crest):
             dune_crest_loc = dune_crest.astype(int)
         else:
             raise ValueError(f'dune_crest should be "max", "rr", int (of size 1 or {self.z_interp.shape[0]}), or None')
@@ -530,8 +534,10 @@ class Profile:
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest)
         elif dune_crest is None:
-            dune_crest_loc = np.zeros((self.z_interp.shape[0],))
-        elif len(dune_crest) == self.z_interp.shape[0] & all(type(_) == int for _ in dune_crest):
+            dune_crest_loc = np.full((self.z_interp.shape[0],), 0)
+        elif len(dune_crest) == self.z_interp.shape[0] & \
+             isinstance(dune_crest, np.ndarray) & \
+             all(isinstance(_, np.int64) for _ in dune_crest):
             dune_crest_loc = dune_crest
         else:
             raise ValueError(f'dune_crest should be "max", "rr", int (of size 1 or {self.z_interp.shape[0]}), or None')
