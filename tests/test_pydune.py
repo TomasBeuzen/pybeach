@@ -133,25 +133,41 @@ class TestpyduneFails(object):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
         with raises(ValueError):  # bad method
             pydune1d.predict_dunecrest(method='m')
+        with raises(ValueError):
             pydune1d.predict_dunecrest(method=1)
+        with raises(ValueError):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
+        with raises(ValueError):
             pydune1d.predict_dunetoe_mc(shoreline='ok')
+        with raises(ValueError):
             pydune1d.predict_dunecrest(method="rr", window_size='string')
+        with raises(ValueError):
             pydune1d.predict_dunetoe_mc(shoreline='string')
+        with raises(ValueError):
             pydune1d.predict_dunetoe_mc(dune_crest='bad_method')
+        with raises(ValueError):
             pydune1d.predict_dunetoe_pd(shoreline='string')
+        with raises(ValueError):
             pydune1d.predict_dunetoe_pd(dune_crest='bad_method')
         with raises(AssertionError):
-            pydune1d.predict_dunetoe_mc(window_size=-1)
+            pydune1d.predict_dunetoe_mc(dune_crest='rr', window_size=-1)
+        with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window=-1)
-            pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window='string')
+        with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(window_size=-1)
+        with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(threshold=-1)
+        with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(water_level='1')
+        with raises(AssertionError):
             pydune1d.predict_dunetoe_ml(1)
+        with raises(AssertionError):
             pydune1d.predict_dunetoe_ml('SR04_clf', -1)
+        with raises(AssertionError):
             pydune1d.predict_dunecrest(method="rr", threshold=1.1)
+        with raises(AssertionError):
             pydune1d.predict_dunecrest(method="rr", threshold=-0.1)
+        with raises(AssertionError):
             pydune1d.predict_dunecrest(method="rr", window_size=-1)
         with raises(FileNotFoundError):
             pydune1d.predict_dunetoe_ml('bad_file_name')
