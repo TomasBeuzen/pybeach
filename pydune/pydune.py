@@ -487,7 +487,7 @@ class Profile:
                             dc_index[i] = np.where(rr > threshold)[0][-1]
                 except:
                     dc_index[i] = np.nanargmin(rr)
-                    print(f'Threshold not found for index {i}, setting dune toe to minimum relief.')
+                    print(f'Threshold not found for index {i}, setting dune toe to maximum relief.')
         else:
             raise ValueError(f'method should be "max" or "rr", not {method}.')
 

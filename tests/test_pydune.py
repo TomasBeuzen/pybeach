@@ -69,6 +69,7 @@ class Testpydune(object):
     def test_predict_dunetoe_rr(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
         assert pydune1d.predict_dunetoe_rr() == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(threshold=0.01) == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_rr() == approx(np.hstack((toe, toe)), abs=10)
 
     def test_predict_dunetoe_pd(self, models):
@@ -85,6 +86,7 @@ class Testpydune(object):
     def test_predict_dunecrest(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
         assert pydune1d.predict_dunecrest(method='max') == approx(crest, abs=10)
+        assert pydune1d.predict_dunecrest(method='rr', threshold=0.99, window_size=[80]) == approx(78, abs=10)
         assert pydune2d.predict_dunecrest(method='rr') == approx(np.hstack((crest, crest)), abs=10)
 
     def test_predict_shoreline(self, models):
@@ -126,6 +128,8 @@ class TestpyduneFails(object):
         with raises(Warning):
             pydune1d.predict_dunetoe_mc(bad_key_word=123)
         with raises(Warning):
+            pydune1d.predict_dunetoe_mc(dune_crest=None, bad_key_word=123)
+        with raises(Warning):
             pydune1d.predict_dunetoe_pd(bad_key_word=123)
         with raises(Warning):
             pydune1d.predict_shoreline(bad_key_word=123)
@@ -149,12 +153,16 @@ class TestpyduneFails(object):
             pydune1d.predict_dunetoe_pd(shoreline='string')
         with raises(ValueError):
             pydune1d.predict_dunetoe_pd(dune_crest='bad_method')
+        with raises(ValueError):
+            pydune1d.predict_dunetoe_rr(window_size='string')
         with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(dune_crest='rr', window_size=-1)
         with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window=-1)
         with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(window_size=-1)
+        with raises(AssertionError):
+            pydune1d.predict_dunetoe_rr(window_size=[21, 1000])
         with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(threshold=-1)
         with raises(AssertionError):
@@ -169,6 +177,8 @@ class TestpyduneFails(object):
             pydune1d.predict_dunecrest(method="rr", threshold=-0.1)
         with raises(AssertionError):
             pydune1d.predict_dunecrest(method="rr", window_size=-1)
+        with raises(AssertionError):
+            pydune1d.predict_dunecrest(method="rr", window_size=[21, 1000])
         with raises(FileNotFoundError):
             pydune1d.predict_dunetoe_ml('bad_file_name')
 
