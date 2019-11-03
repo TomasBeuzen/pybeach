@@ -132,6 +132,8 @@ class TestpyduneFails(object):
         with raises(Warning):
             pydune1d.predict_dunetoe_pd(bad_key_word=123)
         with raises(Warning):
+            pydune1d.predict_dunetoe_pd(dune_crest=None, bad_key_word=123)
+        with raises(Warning):
             pydune1d.predict_shoreline(bad_key_word=123)
         with raises(ValueError):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
@@ -155,6 +157,8 @@ class TestpyduneFails(object):
             pydune1d.predict_dunetoe_pd(dune_crest='bad_method')
         with raises(ValueError):
             pydune1d.predict_dunetoe_rr(window_size='string')
+        with raises(ValueError):
+            pydune1d.predict_shoreline(dune_crest='bad')
         with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(dune_crest='rr', window_size=-1)
         with raises(AssertionError):
