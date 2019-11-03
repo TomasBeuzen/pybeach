@@ -53,8 +53,6 @@ class Profile:
         assert (np.ndim(x) == 1), 'x should be a 1-d array of size (m,).'
         assert (len(x) > 1), 'x should have length > 1.'
         assert isinstance(z, np.ndarray), 'z should be of type ndarray.'
-        if len(x) not in z.shape:
-            raise ValueError(f'Input x of shape ({x.shape[0]},) must share a dimension with input z which has shape {z.shape[0], z.shape[1]}.')
         assert isinstance(window_size, int) & \
                (window_size > 0) & \
                (window_size < len(x)), f'window_size must be int between 0 and {len(x)}.'
@@ -62,6 +60,8 @@ class Profile:
         # Ensure inputs are row vectors
         x = np.atleast_1d(x)
         z = np.atleast_2d(z)
+        if len(x) not in z.shape:
+            raise ValueError(f'Input x of shape ({x.shape[0]},) must share a dimension with input z which has shape {z.shape[0], z.shape[1]}.')
         if x.shape[0] != z.shape[1]:
             z = z.T
 
@@ -140,8 +140,10 @@ class Profile:
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest)
         elif dune_crest is None:
-            dune_crest_loc = np.zeros((self.z_interp.shape[0],))
-        elif len(dune_crest) == self.z_interp.shape[0] & all(type(_)==int for _ in dune_crest):
+            dune_crest_loc = np.full((self.z_interp.shape[0],), 0)
+        elif len(dune_crest) == self.z_interp.shape[0] & \
+                isinstance(dune_crest, np.ndarray) & \
+                all(isinstance(_, np.int64) for _ in dune_crest):
             dune_crest_loc = dune_crest
         else:
             raise ValueError(f'dune_crest should be "max", "rr", int (of size 1 or {self.z_interp.shape[0]}), or None')

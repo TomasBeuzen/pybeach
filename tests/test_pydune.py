@@ -44,6 +44,9 @@ class Testpydune(object):
         assert pydune1d.predict_dunetoe_ml('barrier_island_clf')[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_ml('wave_embayed_clf')[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_ml('mixed_clf')[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_ml('mixed_clf', dune_crest=40)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_ml('mixed_clf', dune_crest=None)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_ml('mixed_clf', dune_crest=np.array([40]))[0] == approx(toe, abs=10)
         # assert pydune2d.predict_dunetoe_ml('SR04_clf')[0] == approx(np.hstack((toe, toe)), abs=10)
 
     def test_predict_dunetoe_mc(self, models):
@@ -90,14 +93,23 @@ class TestpyduneFails(object):
             Profile('x', z1d)
         with raises(AssertionError):  # multidimensional x
             Profile(z2d, x)
+        with raises(ValueError):  # x and z don't share dimension
+            Profile(np.arange(10), z1d)
         with raises(Warning):  # profiles with wrong orientation (sea on left)
             Profile(x, np.flipud(z1d))
 
     def test_bad_method_calls(self, models):
         pydune1d, _, _, _, _ = models
+        with raises(Warning):
+            pydune1d.predict_dunetoe_ml('wave_embayed_clf', bad_key_word=123)
+            pydune1d.predict_dunetoe_mc(bad_key_word=123)
+            pydune1d.predict_dunetoe_rr(bad_key_word=123)
+            pydune1d.predict_dunetoe_pd(bad_key_word=123)
+            pydune1d.predict_shoreline(bad_key_word=123)
         with raises(ValueError):  # bad method
             pydune1d.predict_dunecrest(method='m')
             pydune1d.predict_dunecrest(method=1)
+            pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
             pydune1d.predict_dunetoe_mc(shoreline='ok')
         with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(window_size=-1)
