@@ -34,30 +34,30 @@ package documented herein is motivated by two key aspects:
 dune toe location on 2D beach profiles (e.g., **Fig. 1**). The user inputs into *pydune* an array of
 cross-shore coordinates of shape (*m*,)  and an array of corresponding elevations of shape (*m*,)
 for a single profile or shape (*m*, *n*) for *n* profiles that share the same cross-shore
-co-ordinates. The user can then use *pydune* to identify the location of the dune toe using the
+coordinates. The user can then use *pydune* to identify the location of the dune toe using the
 following methods:
 
-1. maximum curvature [@Stockdon2007] - the dune toe is defined as the location of maximum slope
+1. Maximum curvature [@Stockdon2007] - the dune toe is defined as the location of maximum slope
    change;
-2. relative relief [@Wernette2016] - the dune toe is defined based on relative relief (the ratio
+2. Relative relief [@Wernette2016] - the dune toe is defined based on relative relief (the ratio
    of local morphology to computational scale);
-3. perpendicular distance - the dune toe is defined as the point of maximum perpendicular distance
+3. Perpendicular distance - the dune toe is defined as the point of maximum perpendicular distance
    from the straight line drawn between the dune crest and shoreline; and,
-4. a machine learning model - discussed further below.
+4. Machine learning - discussed further below.
 
 **Fig. 1** shows an example of *pydune* applied to a beach profile transect. The machine learning
-approach to identify the location of the dune toe is a novel approach to detecting the dune toe
-which aims to address some of the issues with existing algorithms (discussed further in Section
-[Statement of Need](#statement-of-need) below). As described further in Section [pydune](#pydune),
-when tested on unseen data, the machine learning approach to dune toe detection outperformed the
-other methods. An additional benefit of the ML approach is that it outputs a probability
-distribution across the length of a profile describing the probability of each individudal location
-being a dune toe. This can be particularly useful for correcting errors and interpreting beach
-morphology. Importantly, the methodology used to create the dune toe machine learning model here
-(described in Section [pydune](#pydune)) is an example of how machine learning can be usefully
-applied to geomorphic and Earth surface systems.
+(ML) approach to identifying the location of the dune toe is novel and aims to address some of the
+issues with existing algorithms (discussed further in Section [Statement of
+Need](#statement-of-need) below). As described further in Section [pydune](#pydune), when tested on
+unseen data, the machine learning approach to dune toe detection outperformed the other methods. An
+additional benefit of the ML approach is that it outputs a probability distribution across the
+length of a profile describing the probability of each individudal location being a dune toe. This
+can be particularly useful for correcting errors and interpreting beach morphology. Importantly, the
+methodology used to create the dune toe ML model here (described in Section [pydune](#pydune)) is an
+example of how ML can be more generaaly used for geomorphic and Earth surface applications.
 
-![pydune-example-figure](docs/img/figure_1.png)*caption*
+![pydune-example-figure](docs/img/figure_1.png)
+*__*Fig. 1*__: Example application of pydune.*
 
 # Statement of Need
 
@@ -73,16 +73,16 @@ extracting dune toe locations on beach profiles found that there is considerable
 performance of these algorithms and expert checking is often required to validate results. A key
 issue is that, while experts can generally identify the dune toe on a beach profile, it is difficult
 to develop an algorithm that can reliably define the dune toe for the large variety of beach profile
-shapes encountered in nature. Here we propose machine learning as an alternative approach to
-creating a dune toe detection model. The idea is to directly encode expert knowledge to create a
-model that is applicable to a large variety of beach profile shapes, and is scalable, such that it
-can be updated and improved as additional data becomes available in the future. The methodology used
-to develop the dune toe machine learning model in *pydune* is discussed in Section [pydune](#pydune)
-below. Over the last decade or so, MATLAB has been the primary data processing environment in
-coastal research. However, with increased use of open-source data, software, and machine learning,
-Python is becoming a more popular programming language in coastal research and practice. An
-additional aim of *pydune* is to collect existing dune toe location algorithms into a single,
-open-source Python package to facilitate the progression of coastal research in Python.
+shapes encountered in nature. Here, ML is used as an alternative approach to creating a dune toe
+detection model. The idea is to directly encode expert knowledge to create a model that is
+applicable to a large variety of beach profile shapes, and is scalable, such that it can be updated
+and improved as additional data becomes available in the future. The methodology used to develop the
+dune toe ML model in *pydune* is discussed in Section [pydune](#pydune) below. As additional
+motivation, while over the last decade or so, MATLAB has been the primary data processing
+environment in coastal research, increased use of open-source data, software, and machine learning,
+has resulted in Python becoming a more popular programming language in coastal research and
+practice. As a result, *pydune* also aims to facilitate the progression of coastal research in
+Python by collating commonly used coastal tools into a single, open-source Python package.
 
 # pydune
 
@@ -91,52 +91,52 @@ for defining the dune toe using each of the approaches listed above. *pydune* ut
 functions located within the *classifier_support.py* and *data_support.py* modules. An instance of
 the *Profile* class can be created using an array of cross-shore coordinates of shape (*m*,) and an
 array of corresponding elevations of shape (*m*,) for a single profile or shape (*m*, *n*) for *n*
-profiles that share the same cross-shore co-ordinates. Profiles should be oriented with the sea on
+profiles that share the same cross-shore coordinates. Profiles should be oriented with the sea on
 the right hand side. Four methods may be called from an instance of the *Profile* class to identify
 the dune toe location:
 
-1. `Profile.predict_dunetoe_ml()` - dune to identified using machine learning method
-2. `Profile.predict_dunetoe_mc()` - dune to identified using maximum curvature method
-3. `Profile.predict_dunetoe_rr()` - dune to identified using relative relief method
-4. `Profile.predict_dunetoe_pd()` - dune to identified using perpendicular distance method
+1. `Profile.predict_dunetoe_ml()` - machine learning method
+2. `Profile.predict_dunetoe_mc()` - maximum curvature method
+3. `Profile.predict_dunetoe_rr()` - relative relief method
+4. `Profile.predict_dunetoe_pd()` - perpendicular distance method
 
 *pydune* also includes methods for identifying the dune crest (`Profile.predict_dunecrest()`) and
 shoreline (`Profile.predict_shoreline()`) position on a beach profile; these methods are highly
 useful for constraining the search area of the algorithms above to the region between the dune crest
-and shoreline and can be called using arguments within the methods above. See the *pydune*
-documentation for further detailsß. The latter three dune toe detection methods are described above
-in Section [Summary](#Summary). The novel dune toe location method provided by *pydune* is the
-machine learning method. Three pre-trained machine learning models are provided with the *pydune*
-package:
+and shoreline and can be called using arguments within the methods above. See the relevant
+docstrings for further details. The latter three dune toe detection methods above were described
+previously in Section [Summary](#Summary). The novel dune toe location method provided by *pydune*
+is the ML method. In fact, three pre-trained ML models are provided with the *pydune* package:
 
 1. a "barrier-island" model. This model was developed using 1046 pre- and 361 post- "Hurricane Ivan"
    airborne LIDAR profiles from Santa-Rosa Island Florida (this data was collected in 2004 and is
    described in [@Doran2018]);
-2. a "wave-embayed" model. This model was developed using 820 pre- and 948 post- "June 2016 storm"
+2. a "wave-embayed" model. This model was developed using 1768 pre- and post- "June 2016 storm"
    airborne LIDAR profiles from the wave-dominated, embayed southeast Australian coastline (this
    data was collected in 2016 and is described in [Harley2017]).
-3. a "mixed" model. A combination of the two above datasets, with a total of 3236 profiles.
+3. a "mixed" model. Developed using a combination of the two above datasets.
 
-In addition to these three models, the script *create_classifier.py* has been included in the
-*pydune* repository to show users how these models were created and to facilitate the creation of
-custom models from other datasets. This methodology is described briefly below.
+In addition to these three pre-trained models, a script, *create_classifier.py*, is included in the
+*pydune* GitHub repository to show users how these models were created and to facilitate the
+creation of custom models from other datasets. This methodology is described briefly below.
 
-As beach profile transects can vary significantly in length (i.e., from 10’s of meters to 100’s of
-meters), the machine learning models developed here were created using fixed lengths of transect
-(referred to as a “window”) instead of an entire transect. Given a window, the aim of the machine
-learning model is to predict the probability of a dune toe being located at the center of the window
-(**Figure 2a**). In practice, *pydune* creates a window around every single cross-shore coordinate
-of an inputted profile and predicts the probability that each cross-shore location is a dune toe,
-selecting the point of highest probability as the dune toe. It was found that the gradient of
-profile elevations within a window (instead of the raw elevations) was a more effective and
-generalizable input into the model (**Figure 2b**). Training a model requires examples of windows
-that are both centered around a dune toe (positive samples) and ones that are not centered around a
-dune toe (negative samples). The negative samples can be a window centered at any point other than
-the actual dune toe. However, the samples should not be so close to the actual dune toe as to
-confuse the model. We therefore define a “buffer zone” around the actual dune toe location (**Figure
-2a**) when generating negative samples, such that negative samples can only be generated using
-points outside of the buffer zone. For each beach profile used for model training, in addition to
-the one positive sample (i.e., the window centered around the true dune toe), a single negative
+For each dataset described above, the dune toe location was manually identified by an expert to
+facilitate the creation of the ML models. As beach profile transects can vary significantly in
+length (i.e., from 10’s of meters to 100’s of meters), the ML models developed here were created
+using fixed lengths of transect (referred to as a“window”) instead of an entire transect. Given a
+window, the aim of the ML model is to predict the probability of a dune toe being located at the
+center of the window (**Figure 2a**). In practice, *pydune* creates a window around every single
+cross-shore coordinate of an inputted profile and predicts the probability that each cross-shore
+location is a dune toe, selecting the point of highest probability as the dune toe. It was found
+that the gradient of profile elevations within a window (instead of the raw elevations) was a more
+effective and generalizable input into the model (**Figure 2b**). Training a model requires examples
+of windows that are both centered around a dune toe (positive samples) and ones that are not
+centered around a dune toe (negative samples). The negative samples can be a window centered at any
+point other than the actual dune toe. However, the samples should not be so close to the actual dune
+toe as to confuse the model. We therefore define a“buffer zone” around the actual dune toe location
+(**Figure 2a**) when generating negative samples, such that negative samples can only be generated
+using points outside of the buffer zone. For each beach profile used for model training, in addition
+to the one positive sample (i.e., the window centered around the true dune toe), a single negative
 sample was randomly extracted, resulting in equal numbers of positive and negative dune toe windows.
 
 ![pydune-methodology-figure](docs/img/figure_2.png)*caption*

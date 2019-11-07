@@ -1,3 +1,4 @@
 # ignore
+/dist
 /data
-/docs/figure-data
+/docs/img
