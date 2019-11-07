@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydune"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Python package for locating the dune toe on cross-shore beach profile transects."
 authors = ["Tomas Beuzen <tomas.beuzen@gmail.com>"]
 license = "MIT"
@@ -15,7 +15,6 @@ python = "^3.6 || ^3.7"
 joblib = "^0.13"
 numpy = "^1.16"
 pandas = "^0.24"
-pytest = "^5.1"
 scikit-learn = "^0.21"
 scipy = "^1.3"
 

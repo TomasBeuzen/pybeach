@@ -7,7 +7,7 @@
 # **pydune**: A Python package for locating the dune toe on cross-shore beach profile transects.
 
 <div align="center">
-  <img src="docs/img/figure_1.png" alt="pydune-example" width="700"/>
+  <img src="https://github.com/TomasBeuzen/pydune/blob/master/docs/img/figure_1.png" alt="pydune-example" width="700"/>
 </div>
 
 ## Background
