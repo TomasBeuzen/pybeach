@@ -3,8 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="feb0eac3-016c-4e71-8f51-121f011d2609" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper.bib" beforeDir="false" afterPath="$PROJECT_DIR$/paper.bib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/img/figure-data/figure_3_table_1_notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/docs/img/figure-data/figure_3_table_1_notebook.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/paper.md" beforeDir="false" afterPath="$PROJECT_DIR$/paper.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pydune/classifiers/barrier_island_train_clf.joblib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pydune/classifiers/create_classifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pydune/classifiers/wave_embayed_train_clf.joblib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pydune/pydune.py" beforeDir="false" afterPath="$PROJECT_DIR$/pydune/beach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_pydune.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_pydune.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +39,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -162,6 +177,8 @@
       <workItem from="1572740326306" duration="6697000" />
       <workItem from="1572823159766" duration="530000" />
       <workItem from="1573057776235" duration="1217000" />
+      <workItem from="1573193515209" duration="282000" />
+      <workItem from="1573313395116" duration="2439000" />
     </task>
     <servers />
   </component>

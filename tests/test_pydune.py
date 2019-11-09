@@ -10,7 +10,7 @@ TO DO:
 import numpy as np
 from sklearn.ensemble.forest import RandomForestClassifier
 from pytest import approx, raises, fixture
-from pydune.pydune import Profile
+from pydune.beach import Profile
 from pydune.support import classifier_support as cs
 
 
@@ -69,7 +69,14 @@ class Testpydune(object):
     def test_predict_dunetoe_rr(self, models):
         pydune1d, pydune2d, toe, crest, shoreline = models
         assert pydune1d.predict_dunetoe_rr() == approx(toe, abs=10)
-        assert pydune1d.predict_dunetoe_rr(threshold=0.01) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(toe_threshold=0.1) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(dune_crest='max') == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(dune_crest=40)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(dune_crest=None)[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(dune_crest=np.array([40]))[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(shoreline=False) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(shoreline=159) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(shoreline=np.array([159])) == approx(toe, abs=10)
         assert pydune2d.predict_dunetoe_rr() == approx(np.hstack((toe, toe)), abs=10)
 
     def test_predict_dunetoe_pd(self, models):
@@ -134,23 +141,29 @@ class TestpyduneFails(object):
         with raises(Warning):
             pydune1d.predict_dunetoe_pd(dune_crest=None, bad_key_word=123)
         with raises(Warning):
+            pydune1d.predict_dunetoe_rr(bad_key_word=123)
+        with raises(Warning):
+            pydune1d.predict_dunetoe_rr(dune_crest=None, bad_key_word=123)
+        with raises(Warning):
             pydune1d.predict_shoreline(bad_key_word=123)
         with raises(ValueError):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
-        with raises(ValueError):  # bad method
+        with raises(ValueError):
             pydune1d.predict_dunecrest(method='m')
         with raises(ValueError):
             pydune1d.predict_dunecrest(method=1)
         with raises(ValueError):
             pydune1d.predict_dunetoe_ml('wave_embayed_clf', dune_crest='bad_method')
         with raises(ValueError):
-            pydune1d.predict_dunetoe_mc(shoreline='ok')
-        with raises(ValueError):
             pydune1d.predict_dunecrest(method="rr", window_size='string')
         with raises(ValueError):
             pydune1d.predict_dunetoe_mc(shoreline='string')
         with raises(ValueError):
             pydune1d.predict_dunetoe_mc(dune_crest='bad_method')
+        with raises(ValueError):
+            pydune1d.predict_dunetoe_rr(shoreline='string')
+        with raises(ValueError):
+            pydune1d.predict_dunetoe_rr(dune_crest='bad_method')
         with raises(ValueError):
             pydune1d.predict_dunetoe_pd(shoreline='string')
         with raises(ValueError):
@@ -163,6 +176,8 @@ class TestpyduneFails(object):
             pydune1d.predict_dunetoe_mc(dune_crest='rr', window_size=-1)
         with raises(AssertionError):
             pydune1d.predict_dunetoe_mc(dune_crest='max', hanning_window=-1)
+        with raises(AssertionError):
+            pydune1d.predict_dunetoe_rr(dune_crest='rr', window_size=-1)
         with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(window_size=-1)
         with raises(AssertionError):
