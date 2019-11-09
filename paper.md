@@ -183,7 +183,7 @@ __*z*__ of shape (*m*,) for a single profile or shape (*m*, *n*) for *n* profile
 used as follows to make predictions of the dune toe location:
 
 ```python
-from pydune import Profile
+from pydune.beach import Profile
 
 # Example data
 import numpy as np
