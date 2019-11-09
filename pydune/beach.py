@@ -433,7 +433,7 @@ class Profile:
         else:
             raise ValueError(f'window_size must bt of type int or list.')
         assert isinstance(toe_threshold, (int, float)) & \
-               (toe_threshold > 0 and toe_threshold < 1), f'threshold should be number between 0 and 1, but {threshold} was passed.'
+               (toe_threshold > 0 and toe_threshold < 1), f'threshold should be number between 0 and 1, but {toe_threshold} was passed.'
         assert isinstance(water_level, (int, float)), f'water_level should be a number, but {water_level} was passed.'
 
         if dune_crest in ['max', 'rr']:

@@ -141,9 +141,9 @@ class TestpyduneFails(object):
         with raises(Warning):
             pydune1d.predict_dunetoe_pd(dune_crest=None, bad_key_word=123)
         with raises(Warning):
-            pydune1d.predict_dunetoe_rr(bad_key_word=123)
+            pydune1d.predict_dunetoe_rr(dune_crest='rr', bad_key_word=123)
         with raises(Warning):
-            pydune1d.predict_dunetoe_rr(dune_crest=None, bad_key_word=123)
+            pydune1d.predict_dunetoe_rr(shoreline=True, bad_key_word=123)
         with raises(Warning):
             pydune1d.predict_shoreline(bad_key_word=123)
         with raises(ValueError):
@@ -169,7 +169,7 @@ class TestpyduneFails(object):
         with raises(ValueError):
             pydune1d.predict_dunetoe_pd(dune_crest='bad_method')
         with raises(ValueError):
-            pydune1d.predict_dunetoe_rr(window_size='string')
+            pydune1d.predict_dunetoe_rr(toe_window_size='string')
         with raises(ValueError):
             pydune1d.predict_shoreline(dune_crest='bad')
         with raises(AssertionError):
@@ -179,11 +179,11 @@ class TestpyduneFails(object):
         with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(dune_crest='rr', window_size=-1)
         with raises(AssertionError):
-            pydune1d.predict_dunetoe_rr(window_size=-1)
+            pydune1d.predict_dunetoe_rr(toe_window_size=-1)
         with raises(AssertionError):
-            pydune1d.predict_dunetoe_rr(window_size=[21, 1000])
+            pydune1d.predict_dunetoe_rr(toe_window_size=[21, 1000])
         with raises(AssertionError):
-            pydune1d.predict_dunetoe_rr(threshold=-1)
+            pydune1d.predict_dunetoe_rr(toe_threshold=-1)
         with raises(AssertionError):
             pydune1d.predict_dunetoe_rr(water_level='1')
         with raises(AssertionError):
