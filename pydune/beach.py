@@ -474,7 +474,7 @@ class Profile:
 
         window = np.atleast_1d(toe_window_size)
         dt_index = np.full((self.z.shape[0],), np.nan)
-        for i, row in enumerate(self.z_interp):
+        for i, row in enumerate(self.z):
             rr = ds.relative_relief(row, window, water_level)
             try:
                 # suppress warnings for use of < with nan values
@@ -485,8 +485,6 @@ class Profile:
                 print(f'Threshold not exceeded for profile {i}, setting dune toe to minimum relief.')
         dt_index = dt_index.astype(int)
 
-        # Interp back to original x coordinates
-        dt_index = ds.interp_toe_to_grid(self.x_interp, self.x, dt_index)
         return dt_index
 
     def predict_dunecrest(self, method="max", window_size=21, threshold=0.8, water_level=0):
