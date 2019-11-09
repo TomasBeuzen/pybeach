@@ -459,8 +459,8 @@ class Profile:
                 if k not in ["window_size", "threshold", "water_level"]:
                     raise Warning(f'{k} not a valid argument for predict_dunecrest() or predict_shoreline()')
             kwargs = {k: v for k, v in kwargs.items()
-                      if k in ["water_level"]}
-            shoreline_loc = self.predict_shoreline(**kwargs)
+                      if k in ["water_level", "window_size", "threshold"]}
+            shoreline_loc = self.predict_shoreline(water_level, dune_crest, **kwargs)
         elif shoreline is False or shoreline is None:
             shoreline_loc = np.full((self.z_interp.shape[0],), -1).astype(int)
         elif isinstance(shoreline, int):

@@ -70,10 +70,12 @@ class Testpydune(object):
         pydune1d, pydune2d, toe, crest, shoreline = models
         assert pydune1d.predict_dunetoe_rr() == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(toe_threshold=0.1) == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(toe_threshold=0.01) == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(dune_crest='max') == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(dune_crest=40)[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(dune_crest=None)[0] == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(dune_crest=np.array([40]))[0] == approx(toe, abs=10)
+        assert pydune1d.predict_dunetoe_rr(shoreline=True) == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(shoreline=False) == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(shoreline=159) == approx(toe, abs=10)
         assert pydune1d.predict_dunetoe_rr(shoreline=np.array([159])) == approx(toe, abs=10)
