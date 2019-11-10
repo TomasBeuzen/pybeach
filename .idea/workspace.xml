@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feb0eac3-016c-4e71-8f51-121f011d2609" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/example/example.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pydune/beach.py" beforeDir="false" afterPath="$PROJECT_DIR$/pydune/beach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
@@ -170,7 +170,7 @@
       <workItem from="1572823159766" duration="530000" />
       <workItem from="1573057776235" duration="1217000" />
       <workItem from="1573193515209" duration="282000" />
-      <workItem from="1573313395116" duration="4525000" />
+      <workItem from="1573313395116" duration="7899000" />
     </task>
     <servers />
   </component>

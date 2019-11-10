@@ -370,7 +370,7 @@ class Profile:
 
         return dt_index.astype(int)
 
-    def predict_dunetoe_rr(self, toe_window_size=21, toe_threshold=0.2, water_level=0, dune_crest=None, shoreline=None, **kwargs):
+    def predict_dunetoe_rr(self, toe_window_size=21, toe_threshold=0.2, water_level=0, dune_crest=None, shoreline=None, verbose=True, **kwargs):
         """
         Predict dune toe location based on relative relief (rr). Based on
         Wernette et al. (2016):
@@ -412,6 +412,10 @@ class Profile:
             False: do not use or find a shoreline location.
             int: integer specifying the location of the shoreline. Of size 1 or
                  self.z.shape[0].
+        verbose : bool, default True
+            If True, will output notifications for when no relative relief value lies
+            below toe_threshold, in which case the minimum relative relief is selected
+            as the toe location.
         **kwargs : arguments
             Additional arguments to pass to `predict_dunecrest()` and/or
             `predict_shoreline()`. Keywords include window_size, threshold, water_level.
@@ -443,6 +447,7 @@ class Profile:
             kwargs = {k: v for k, v in kwargs.items()
                       if k in ["window_size", "threshold", "water_level"]}
             dune_crest_loc = self.predict_dunecrest(method=dune_crest, **kwargs)
+            dune_crest_loc = ds.interp_toe_to_grid(self.x, self.x_interp, dune_crest_loc)
         elif isinstance(dune_crest, int):
             dune_crest_loc = np.full((self.z_interp.shape[0],), dune_crest).astype(int)
         elif dune_crest is None:
@@ -451,6 +456,7 @@ class Profile:
              isinstance(dune_crest, np.ndarray) & \
              all(isinstance(_, np.int64) for _ in dune_crest):
             dune_crest_loc = dune_crest.astype(int)
+            dune_crest_loc = ds.interp_toe_to_grid(self.x, self.x_interp, dune_crest_loc)
         else:
             raise ValueError(f'dune_crest should be "max", "rr", int (of size 1 or {self.z_interp.shape[0]}), or None')
 
@@ -461,6 +467,7 @@ class Profile:
             kwargs = {k: v for k, v in kwargs.items()
                       if k in ["water_level", "window_size", "threshold"]}
             shoreline_loc = self.predict_shoreline(water_level, dune_crest, **kwargs)
+            shoreline_loc = ds.interp_toe_to_grid(self.x, self.x_interp, shoreline_loc)
         elif shoreline is False or shoreline is None:
             shoreline_loc = np.full((self.z_interp.shape[0],), -1).astype(int)
         elif isinstance(shoreline, int):
@@ -469,12 +476,13 @@ class Profile:
              isinstance(shoreline, np.ndarray) & \
              all(isinstance(_, np.int64) for _ in shoreline):
             shoreline_loc = shoreline
+            shoreline_loc = ds.interp_toe_to_grid(self.x, self.x_interp, shoreline_loc)
         else:
             raise ValueError(f'shoreline should be bool, or int (of size 1 or {self.z_interp.shape[0]})')
 
         window = np.atleast_1d(toe_window_size)
-        dt_index = np.full((self.z.shape[0],), np.nan)
-        for i, row in enumerate(self.z):
+        dt_index = np.full((self.z_interp.shape[0],), np.nan)
+        for i, row in enumerate(self.z_interp):
             rr = ds.relative_relief(row, window, water_level)
             try:
                 # suppress warnings for use of < with nan values
@@ -482,9 +490,8 @@ class Profile:
                         dt_index[i] = np.where(rr[dune_crest_loc[i]:shoreline_loc[i]] < toe_threshold)[0][-1] + dune_crest_loc[i]
             except:
                 dt_index[i] = np.nanargmin(rr[dune_crest_loc[i]:shoreline_loc[i]]) + dune_crest_loc[i]
-                print(f'Threshold not exceeded for profile {i}, setting dune toe to minimum relief.')
-        dt_index = dt_index.astype(int)
-
+                if verbose: print(f'Threshold not exceeded for profile {i}, setting dune toe to minimum relief.')
+        dt_index = ds.interp_toe_to_grid(self.x_interp, self.x, dt_index.astype(int))
         return dt_index
 
     def predict_dunecrest(self, method="max", window_size=21, threshold=0.8, water_level=0):
