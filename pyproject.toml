@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydune"
-version = "0.1.26"
+version = "0.1.1"
 description = "A Python package for locating the dune toe on cross-shore beach profile transects."
 authors = ["Tomas Beuzen <tomas.beuzen@gmail.com>"]
 license = "MIT"
