@@ -5,9 +5,9 @@ description = "A Python package for locating the dune toe on cross-shore beach p
 authors = ["Tomas Beuzen <tomas.beuzen@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/TomasBeuzen/pydune"
-repository = "https://github.com/TomasBeuzen/pydune"
-documentation = 'https://pydune-tomasbeuzen.readthedocs.io'
+homepage = "https://github.com/TomasBeuzen/pybeach"
+repository = "https://github.com/TomasBeuzen/pybeach"
+documentation = 'https://pybeach-tomasbeuzen.readthedocs.io'
 keywords = ["coastal", "dune", "dune toe", "beach", "machine learning"]
 
 [tool.poetry.dependencies]
