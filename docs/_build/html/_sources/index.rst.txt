@@ -1,19 +1,24 @@
-Welcome to pydune's documentation!
-==================================
+Welcome to pybeach's documentation!
+===================================
 
-.. image:: https://travis-ci.org/TomasBeuzen/pydune.svg?branch=master
-        :target: https://travis-ci.org/TomasBeuzen/pydune
+.. image:: https://travis-ci.org/TomasBeuzen/pybeach.svg?branch=master
+    :target: https://travis-ci.org/TomasBeuzen/pybeach
+    :alt: Build Status
 
-.. image:: https://readthedocs.org/projects/pydune-tomasbeuzen/badge/?version=latest
-    :target: https://pydune-tomasbeuzen.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/pybeach-tomasbeuzen/badge/?version=latest
+    :target: https://pybeach-tomasbeuzen.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-**pydune** is a Python package for locating the dune toe on cross-shore beach profile transects. 
+.. image:: https://coveralls.io/repos/github/TomasBeuzen/pybeach/badge.svg?branch=master
+    :target: https://coveralls.io/github/TomasBeuzen/pybeach?branch=master
+    :alt: Coverage
+
+**pybeach** is a Python package for locating the dune toe on cross-shore beach profile transects. 
 
 .. image:: ./_static/figure_1.png
 ..
 
-    | Example application of **pydune**.
+    | Example application of **pybeach**.
 
 Contents
 ~~~~~~~~

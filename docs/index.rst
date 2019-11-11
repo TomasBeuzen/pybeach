@@ -1,5 +1,5 @@
 Welcome to pybeach's documentation!
-==================================
+===================================
 
 .. image:: https://travis-ci.org/TomasBeuzen/pybeach.svg?branch=master
     :target: https://travis-ci.org/TomasBeuzen/pybeach

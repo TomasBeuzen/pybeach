@@ -21,4 +21,4 @@ See the **pydune** paper_ for more details of these methods.
 --------
 
 .. [#sto07] Stockdon, H. F., Sallenger Jr, A. H., Holman, R. A., & Howd, P. A.      "A simple model for the spatially-variable coastal response to hurricanes."     Marine Geology, 238 (2007): 1-20. https://doi.org/10.1016/j.margeo.2006.11.004
-.. [#wer16] Wernette, P., Houser, C., & Bishop, M. P. "An automated approach        for extracting Barrier Island morphology from digital elevation models."        Geomorphology, 262 (2016): 1-7. https://doi.org/10.1016/j.geomorph.2016.02.024.
+.. [#wer16] Wernette, P., Houser, C., & Bishop, M. P. "An automated approach        for extracting Barrier Island morphology from digital elevation models."        Geomorphology, 262 (2016): 1-7. https://doi.org/10.1016/j.geomorph.2016.02.024
