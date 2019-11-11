@@ -4,13 +4,13 @@ Created on Wed Mar 6 12:43:40 2019
 
 @author: Tomas Beuzen
 
-Functions for handling classifiers used to support pydune.
+Functions for handling classifiers used to support pybeach.
 """
 import joblib
 import pkg_resources
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from pydune.support import data_support as ds
+from pybeach.support import data_support as ds
 
 
 def create_classifier(x, z, toe, window=40, min_buffer=40, max_buffer=200):
@@ -76,7 +76,7 @@ def load_classifier(clf_name):
     clf : scikit-learn classifier
         Classifier.
     """
-    clf_path = pkg_resources.resource_filename('pydune',
+    clf_path = pkg_resources.resource_filename('pybeach',
                                                'classifiers/' +
                                                 clf_name +
                                                 '.joblib')

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pydune"
+name = "pybeach"
 version = "0.1.1"
 description = "A Python package for locating the dune toe on cross-shore beach profile transects."
 authors = ["Tomas Beuzen <tomas.beuzen@gmail.com>"]
@@ -8,7 +8,7 @@ readme = "README.md"
 homepage = "https://github.com/TomasBeuzen/pydune"
 repository = "https://github.com/TomasBeuzen/pydune"
 documentation = 'https://pydune-tomasbeuzen.readthedocs.io'
-keywords = ["coastal", "dune", "dune toe", "machine learning"]
+keywords = ["coastal", "dune", "dune toe", "beach", "machine learning"]
 
 [tool.poetry.dependencies]
 python = "^3.7"

@@ -1,5 +1,5 @@
 ---
-title: 'pydune: A Python module for extracting the location of dune toes on beach profile transects'
+title: 'pybeach: A Python package for extracting the location of dune toes on beach profile transects'
 tags:
   - Python
   - coastal
@@ -24,17 +24,17 @@ storm-induced waves and surge. The capacity of sandy dunes to provide coastal ha
 depends in large part on their geometry. In particular, the location of the dune toe (the transition
 point between the beach and dune) is a key factor used in coastal erosion models and for assessing
 coastal vulnerability to hazards [@Sallenger2000]. There are many different algorithms currently
-available for automatically detecting the dune toe on 2D cross-shore beach profiles. The __*pydune*__
+available for automatically detecting the dune toe on 2D cross-shore beach profiles. The __*pybeach*__
 package documented herein is motivated by two key aspects:
 
 1. to collect existing done toe detection algorithms in a single, functional Python package; and,
 2. to provide an additional new method for detecting dune toe location based on machine learning.
 
-__*pydune*__ is an open-source Python package that allows a user to quickly and effectively identify the
-dune toe location on 2D beach profiles (e.g., **Fig. 1**). The user inputs into __*pydune*__ an array of
+__*pybeach*__ is an open-source Python package that allows a user to quickly and effectively identify the
+dune toe location on 2D beach profiles (e.g., **Fig. 1**). The user inputs into __*pybeach*__ an array of
 cross-shore coordinates of shape (*m*,)  and an array of corresponding elevations of shape (*m*,)
 for a single profile or shape (*m*, *n*) for *n* profiles that share the same cross-shore
-coordinates. The user can then use __*pydune*__ to identify the location of the dune toe using the
+coordinates. The user can then use __*pybeach*__ to identify the location of the dune toe using the
 following methods:
 
 1. Maximum curvature [@Stockdon2007] - the dune toe is defined as the location of maximum slope
@@ -45,18 +45,18 @@ following methods:
    from the straight line drawn between the dune crest and shoreline; and,
 4. Machine learning - discussed further below.
 
-**Fig. 1** shows an example of __*pydune*__ applied to a beach profile transect. The machine learning
+**Fig. 1** shows an example of __*pybeach*__ applied to a beach profile transect. The machine learning
 (ML) approach to identifying the location of the dune toe is novel and aims to address some of the
 issues with existing algorithms (discussed further in Section [Statement of
-Need](#statement-of-need) below). As described further in Section [pydune](#pydune), when tested on
+Need](#statement-of-need) below). As described further in Section [pybeach](#pybeach), when tested on
 unseen data, the machine learning approach to dune toe detection outperformed the other methods. An
 additional benefit of the ML approach is that it outputs a probability distribution across the
 length of a profile describing the probability of each individudal location being a dune toe. This
 can be particularly useful for correcting errors and interpreting beach morphology. Importantly, the
-methodology used to create the dune toe ML model here (described in Section [pydune](#pydune)) is an
+methodology used to create the dune toe ML model here (described in Section [pybeach](#pybeach)) is an
 example of how ML can be more generally used for geomorphic and Earth surface applications.
 
-![pydune-example-figure](docs/img/figure_1.png) *__*Fig. 1*__: Example application of pydune.
+![pybeach-example-figure](docs/img/figure_1.png) *__*Fig. 1*__: Example application of pybeach.
 
 # Statement of Need
 
@@ -77,18 +77,18 @@ the dune toe for the large variety of beach profile shapes encountered in nature
 as an alternative approach to creating a dune toe detection model. The idea is to directly encode
 expert knowledge to create a model that is applicable to a large variety of beach profile shapes, is
 scalable, such that it can be updated and improved as additional data becomes available in the
-future. The methodology used to develop the dune toe ML model in __*pydune*__ is discussed in
-Section [pydune](#pydune) below. As additional motivation, MATLAB has been the primary data
+future. The methodology used to develop the dune toe ML model in __*pybeach*__ is discussed in
+Section [pybeach](#pybeach) below. As additional motivation, MATLAB has been the primary data
 processing environment in coastal research over the last decade or so, however increased use of
 open-source data, software, and machine learning, has resulted in Python becoming a more popular
-programming language in coastal research and practice. As a result, __*pydune*__ also aims to
+programming language in coastal research and practice. As a result, __*pybeach*__ also aims to
 facilitate the progression of coastal research in Python by collating commonly used coastal tools
 into a single, open-source Python package.
 
-# pydune
+# pybeach
 
-The __*pydune*__ Python module provides a *Profile* class in the *beach.py* module. This class
-contains methods for defining the dune toe using each of the approaches listed above. __*pydune*__
+The __*pybeach*__ Python module provides a *Profile* class in the *beach.py* module. This class
+contains methods for defining the dune toe using each of the approaches listed above. __*pybeach*__
 utilises support functions located within the *classifier_support.py* and *data_support.py* modules.
 An instance of the *Profile* class can be created using an array of cross-shore coordinates of shape
 (*m*,) and an array of corresponding elevations of shape (*m*,) for a single profile or shape (*m*,
@@ -101,14 +101,14 @@ to identify the dune toe location:
 3. `Profile.predict_dunetoe_rr()`  # relative relief method (RR)
 4. `Profile.predict_dunetoe_pd()`  # perpendicular distance method (PD)
 
-__*pydune*__ also includes methods for identifying the dune crest (`Profile.predict_dunecrest()`)
+__*pybeach*__ also includes methods for identifying the dune crest (`Profile.predict_dunecrest()`)
 and shoreline (`Profile.predict_shoreline()`) position on a beach profile; these methods are highly
 useful for constraining the search area of the algorithms above to the region between the dune crest
 and shoreline and can be called using relevant parameters for each of the methods above. See the
 relevant docstrings for further details. The latter three dune toe detection methods above were
 described previously in Section [Summary](#Summary). The novel dune toe location method provided by
-__*pydune*__ is the ML method. In fact, three pre-trained ML models are provided with the
-__*pydune*__ package:
+__*pybeach*__ is the ML method. In fact, three pre-trained ML models are provided with the
+__*pybeach*__ package:
 
 1. a "barrier-island" model. This model was developed using 1046 pre- and post- "Hurricane Ivan"
    airborne LIDAR profiles from Santa-Rosa Island Florida (this data was collected in 2004 and is
@@ -121,15 +121,15 @@ __*pydune*__ package:
 In addition to these three pre-trained models, the function *create_classifier()* in the
 *classifier_support.py* module, allows users to create a custom ML model from other data. The
 methodology for creating these models is described briefly below and is demonstrated in the example
-Jupyter notebook contained within the __*pydune*__ [GitHub
-repository](https://github.com/TomasBeuzen/pydune/blob/master/example/example.ipynb).
+Jupyter notebook contained within the __*pybeach*__ [GitHub
+repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb).
 
 For each dataset described above, the dune toe location was manually identified by an expert to
 facilitate the creation of the ML models. As beach profile transects can vary significantly in
 length (i.e., from 10’s of meters to 100’s of meters), the ML models developed here were created
 using fixed lengths of transect (hereafter referred to as a “window”) instead of an entire transect.
 Given a window, the aim of the ML model is to predict the probability of a dune toe being located at
-the center of the window (**Figure 2a**). In practice, __*pydune*__ creates a window around every single
+the center of the window (**Figure 2a**). In practice, __*pybeach*__ creates a window around every single
 cross-shore coordinate of an inputted profile and predicts the probability that each cross-shore
 location is a dune toe, selecting the point of highest probability as the dune toe. It was found
 that the gradient of profile elevations within a window (instead of the raw elevations) was a more
@@ -143,8 +143,8 @@ using points outside of the buffer zone. For each beach profile used for model t
 to the one positive sample (i.e., the window centered around the true dune toe), a single negative
 sample is also randomly extracted, resulting in equal numbers of positive and negative dune toe windows.
 
-![pydune-methodology-figure](docs/img/figure_2.png) *__*Fig. 2*__: Example of "positive" and
-"negative" dune toe windows used to train the ML models in pydune. 
+![pybeach-methodology-figure](docs/img/figure_2.png) *__*Fig. 2*__: Example of "positive" and
+"negative" dune toe windows used to train the ML models in pybeach. 
 
 These windows are simply vectors of elevation change (the features), associated with a label of 1
 (positive sample) or 0 (negative sample) (the class). A random forest classifier algorithm was used
@@ -158,17 +158,17 @@ cross-validation grid search was conducted over different values of these two pa
 window size of 20 m and buffer size of 20 m were found to be optimal. However, users may adjust
 these parameters when generating their own models.
 
-To test the performance of the dune toe location algorithms in __*pydune*__, 200 profiles were
+To test the performance of the dune toe location algorithms in __*pybeach*__, 200 profiles were
 reserved as testing data and were not at all involved in ML model development. These profiles are
-located in the __*pydune*__ [GitHub
-repository](https://github.com/TomasBeuzen/pydune/tree/master/example). Figure 3 and Table 1 show
+located in the __*pybeach*__ [GitHub
+repository](https://github.com/TomasBeuzen/pybeach/tree/master/example). Figure 3 and Table 1 show
 the performance of the different algorithms (ML, MC, RR, PD) and can be reproduced using the example
-Jupyter notebook contained within the __*pydune*__ [GitHub
-repository](https://github.com/TomasBeuzen/pydune/blob/master/example/example.ipynb). It can be seen
+Jupyter notebook contained within the __*pybeach*__ [GitHub
+repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb). It can be seen
 that the ML model consdierably outperforms the other dune toe location algorithms for this testing
 set of 200 beach profiles.
 
-![pydune-test-figure](docs/img/figure_3.png) *__*Fig. 3*__: Boxplot of pydune results on 200 test beach profiles.
+![pybeach-test-figure](docs/img/figure_3.png) *__*Fig. 3*__: Boxplot of pybeach results on 200 test beach profiles.
 
 |    |   MAE |   RMSE |   R2 |
 |:---|------:|-------:|-----:|
@@ -179,21 +179,21 @@ set of 200 beach profiles.
 
 ### Installation
 
-__*pydune*__ is available on the Python Package Index (PyPI) and can be installed with the
+__*pybeach*__ is available on the Python Package Index (PyPI) and can be installed with the
 following:
 
 ```bash
-pip install pydune
+pip install pybeach
 ```
 
 ### Usage
 
 Given an array of cross-shore coordinates, __*x*__ of shape (*m*,)  and corresponding elevations
-__*z*__ of shape (*m*,) for a single profile or shape (*m*, *n*) for *n* profiles, __*pydune*__ can be
+__*z*__ of shape (*m*,) for a single profile or shape (*m*, *n*) for *n* profiles, __*pybeach*__ can be
 used as follows to make predictions of the dune toe location:
 
 ```python
-from pydune.beach import Profile
+from pybeach.beach import Profile
 
 # Some syntehtic data
 import numpy as np
@@ -204,32 +204,32 @@ z = np.concatenate((np.linspace(4, 5, 40),
                     np.linspace(0, -1, 20)))
 
 # Instantiate Profile class
-pyd = Profile(x, z)
+pb = Profile(x, z)
 
 # Predict dune toe location
-toe_ml = pyd.predict_dunetoe_ml('mixed_clf') # use the machine learning (ML) method
-toe_mc = pyd.predict_dunetoe_mc() # use the maximum curvature (MC) method
-toe_rr = pyd.predict_dunetoe_rr() # use the relative relief (RR) method
-toe_pd = pyd.predict_dunetoe_pd() # use the perpendicular distance (PD) method
+toe_ml = pb.predict_dunetoe_ml('mixed_clf') # use the machine learning (ML) method
+toe_mc = pb.predict_dunetoe_mc() # use the maximum curvature (MC) method
+toe_rr = pb.predict_dunetoe_rr() # use the relative relief (RR) method
+toe_pd = pb.predict_dunetoe_pd() # use the perpendicular distance (PD) method
 
 # Predict shoreline and dune crest location
-crest = pyd.predict_dunecrest()
-shoreline = pyd.predict_shoreline()
+crest = pb.predict_dunecrest()
+shoreline = pb.predict_shoreline()
 ```
 
-The __*pydune*__ source code can be found on [github](https://github.com/TomasBeuzen/pydune). Please see
+The __*pybeach*__ source code can be found on [github](https://github.com/TomasBeuzen/pybeach). Please see
 the [example Jupyter
-notebook](https://github.com/TomasBeuzen/pydune/blob/master/example/example.ipynb) for
-additional information on how to use __*pydune*__ and to re-create figures presented in this paper.
+notebook](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb) for
+additional information on how to use __*pybeach*__ and to re-create figures presented in this paper.
 
 ### Future Work
 
-An ambition of __*pydune*__ is to act as a central repository for coastal data and algorithms
+An ambition of __*pybeach*__ is to act as a central repository for coastal data and algorithms
 related to morphological and hydrodynamic calculations and to integrate with existing coastal Python
 tools such as [CoastSat](https://github.com/kvos/CoastSat) [@Vos2019],
 [py-wave-runup](https://github.com/chrisleaman/py-wave-runup) [@Leaman2019],
 [CVNetica_VS](https://github.com/simmonsja/CVNetica_VS) [@Beuzen2019], and
-[pyDGS](https://github.com/dbuscombe-usgs/pyDGS) [@Buscombe2013]. __*pydune*__ was created in such
+[pyDGS](https://github.com/dbuscombe-usgs/pyDGS) [@Buscombe2013]. __*pybeach*__ was created in such
 as way that it can easily be expanded upon in future. Immediate goals include adding capacity
 to identify morphological features like dune toes from 3D coastal data (such as digital elevation
 models) as well as adding new classes for the calculation of commonly used hydrodynamic parameters
@@ -238,7 +238,7 @@ models) as well as adding new classes for the calculation of commonly used hydro
 # Acknowledgements
 
 I would like to thank those that contributed to the collection and processing of data used to
-develop the ML models in __*pydune*__. In particular, Dr. Mitchell Harley, Prof. Jason H. Middleton
+develop the ML models in __*pybeach*__. In particular, Dr. Mitchell Harley, Prof. Jason H. Middleton
 and Peter J. Mumford from the UNSW School of Aviation for conducting the Airborne Lidar surveys and
 Lidar data pre- processing for the June 2016 storm, and Dr. Kara Doran, Dr. Nathaniel
 Plant, Dr. Hilary Stockdon and the USGS for providing the Hurricane Ivan Lidar data, available

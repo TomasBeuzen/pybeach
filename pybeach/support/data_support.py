@@ -4,7 +4,7 @@ Created on Wed Mar 6 12:43:40 2019
 
 @author: Tomas Beuzen
 
-Functions for processing data used to support pydune.
+Functions for processing data used to support pybeach.
 """
 
 import numpy as np

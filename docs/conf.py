@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'pydune'
+project = 'pybeach'
 copyright = '2019, Tomas Beuzen'
 author = 'Tomas Beuzen'
 
@@ -67,7 +67,7 @@ html_sidebars = {
 html_theme_options = {
     "description": "Dune toe location algorithms implemented in Python for coastal engineers and scientists.",
     "github_user": "TomasBeuzen",
-    "github_repo": "pydune",
+    "github_repo": "pybeach",
     "fixed_sidebar": True,
     "github_button": True,
 }

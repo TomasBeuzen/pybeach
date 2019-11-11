@@ -6,8 +6,8 @@ Created on Wed Mar 6 12:43:40 2019
 """
 
 import numpy as np
-from pydune.support import data_support as ds
-from pydune.support import classifier_support as cs
+from pybeach.support import data_support as ds
+from pybeach.support import classifier_support as cs
 
 
 class Profile:
@@ -89,7 +89,7 @@ class Profile:
     def predict_dunetoe_ml(self, clf_name, no_of_output=1, dune_crest='max', **kwargs):
         """
         Predict dune toe location using a pre-trained machine learning (ml) classifier.
-        See pydune/classifiers/create_classifier.py to create a classifier.
+        See pybeach/classifiers/create_classifier.py to create a classifier.
 
         ...
 

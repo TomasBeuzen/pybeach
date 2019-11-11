@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-This is the unittest for pydune.
-
-TO DO:
-- define a test data fixture
-- use it in the fails especially
+This is the unittest for pybeach.
 """
 
 import numpy as np
 from sklearn.ensemble.forest import RandomForestClassifier
 from pytest import approx, raises, fixture
-from pydune.beach import Profile
-from pydune.support import classifier_support as cs
+from pybeach.beach import Profile
+from pybeach.support import classifier_support as cs
 
 
 @fixture()
@@ -25,9 +21,9 @@ def models():
     toe = np.array([51])
     crest = np.array([38])
     shoreline = np.array([140])
-    pydune1d = Profile(x, z)
-    pydune2d = Profile(x, np.vstack((z, z)))
-    return pydune1d, pydune2d, toe, crest, shoreline
+    pybeach1d = Profile(x, z)
+    pybeach2d = Profile(x, np.vstack((z, z)))
+    return pybeach1d, pybeach2d, toe, crest, shoreline
 
 @fixture()
 def data():

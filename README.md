@@ -21,7 +21,7 @@ In addition, **pydune** contains methods for identifying the shoreline position 
 
 ## Usage
 ```python
-from pydune.beach import Profile
+from pybeach.beach import Profile
 
 # example data
 x = np.arange(0, 80, 0.5)

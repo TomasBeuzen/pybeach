@@ -9,6 +9,6 @@ install:
   - pip install -r docs/requirements.txt
 # command to run tests
 script:
-  - pytest --cov=pydune/
+  - pytest --cov=pybeach/
 after_success:
   - coveralls
