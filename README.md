@@ -1,7 +1,7 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/TomasBeuzen/pybeach.svg?branch=master)](https://travis-ci.org/TomasBeuzen/pybeach)
-[![Documentation Status](https://readthedocs.org/projects/pybeach-tomasbeuzen/badge/?version=latest)](https://pybeach-tomasbeuzen.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/pybeach/badge/?version=latest)](https://pybeach.readthedocs.io/en/latest/?badge=latest)
 [![Coverage Status](https://coveralls.io/repos/github/TomasBeuzen/pybeach/badge.svg?branch=master&service=github)](https://coveralls.io/github/TomasBeuzen/pybeach?branch=master)
 
 # **pybeach**: A Python package for locating the dune toe on cross-shore beach profile transects.
