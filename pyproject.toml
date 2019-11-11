@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/TomasBeuzen/pybeach"
 repository = "https://github.com/TomasBeuzen/pybeach"
-documentation = 'https://pybeach-tomasbeuzen.readthedocs.io'
+documentation = 'https://pybeach.readthedocs.io'
 keywords = ["coastal", "dune", "dune toe", "beach", "machine learning"]
 
 [tool.poetry.dependencies]
