@@ -5,8 +5,8 @@ Welcome to pybeach's documentation!
     :target: https://travis-ci.org/TomasBeuzen/pybeach
     :alt: Build Status
 
-.. image:: https://readthedocs.org/projects/pybeach-tomasbeuzen/badge/?version=latest
-    :target: https://pybeach-tomasbeuzen.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/pybeach/badge/?version=latest
+    :target: https://pybeach.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
 .. image:: https://coveralls.io/repos/github/TomasBeuzen/pybeach/badge.svg?branch=master
