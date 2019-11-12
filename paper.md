@@ -173,14 +173,7 @@ testing set of 200 beach profiles.
 
 ![Boxplot of pybeach results on 200 test beach profiles.](docs/img/figure_3.png)
 
-__Table 1__: Mean absolute error (MAE), root-mean-squared-error (RMSE), and r-squared (R2) of the four dune toe detection algorithms in pybeach applied to the 200 test profiles.*
-
-|    |   MAE |   RMSE |   R2 |
-|:---|------:|-------:|-----:|
-| ML | 2.40 |  5.17 | 0.99 |
-| MC | 7.59 |  10.57 | 0.96 |
-| RR | 8.59 |  11.22 | 0.95 |
-| PD | 5.18 |  8.22 | 0.98 |
+![Mean absolute error (MAE), root-mean-squared-error (RMSE), and r-squared (R2) of the four dune toe detection algorithms in pybeach applied to the 200 test profiles.](docs/img/table_1.png)
 
 ### Installation
 
