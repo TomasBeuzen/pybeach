@@ -31,7 +31,7 @@ package documented herein is motivated by two key aspects:
 2. to provide an additional new method for detecting dune toe location based on machine learning.
 
 __*pybeach*__ is an open-source Python package that allows a user to quickly and effectively identify the
-dune toe location on 2D beach profiles (e.g., **Fig. 1**). The user inputs into __*pybeach*__ an array of
+dune toe location on 2D beach profiles (e.g., **Figure 1**). The user inputs into __*pybeach*__ an array of
 cross-shore coordinates of shape (*m*,)  and an array of corresponding elevations of shape (*m*,)
 for a single profile or shape (*m*, *n*) for *n* profiles that share the same cross-shore
 coordinates. The user can then use __*pybeach*__ to identify the location of the dune toe using the
@@ -45,7 +45,7 @@ following methods:
    from the straight line drawn between the dune crest and shoreline; and,
 4. Machine learning - discussed further below.
 
-**Fig. 1** shows examples of __*pybeach*__ applied to different beach profile transects. The machine
+**Figure 1** shows examples of __*pybeach*__ applied to different beach profile transects. The machine
 learning (ML) approach to identifying the location of the dune toe is novel and aims to address some
 of the issues with existing algorithms (discussed further in Section [Statement of
 Need](#statement-of-need) below). As described further in Section [pybeach](#pybeach), when tested
@@ -57,7 +57,7 @@ errors and interpreting beach morphology. Importantly, the methodology used to c
 ML model here (described in Section [pybeach](#pybeach)) is an example of how ML can be more
 generally applied to geomorphic and Earth surface systems.
 
-![pybeach-example-figure](docs/img/figure_1.png) *__*Fig. 1*__: Example applications of pybeach.*
+![pybeach-example-figure](docs/img/figure_1.png) *__*Figure 1*__: Example applications of pybeach.*
 
 # Statement of Need
 
@@ -145,7 +145,7 @@ profile used for model training, in addition to the one positive sample (i.e., t
 around the true dune toe), a single negative sample is also randomly extracted, resulting in equal
 numbers of positive and negative dune toe windows for model training.
 
-![pybeach-methodology-figure](docs/img/figure_2.png) *__*Fig. 2*__: Example of "positive" and
+![pybeach-methodology-figure](docs/img/figure_2.png) *__*Figure 2*__: Example of "positive" and
 "negative" dune toe windows used to train the ML models in pybeach. (a) shows the raw beach profile
 data with the "positive" dune toe window and location marked in green and a randomly selected
 "negative" dune toe window and location markined in red. (b) shows the gradient (first differential)
@@ -175,7 +175,10 @@ repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.i
 seen that the ML model consdierably outperforms the other dune toe location algorithms for this
 testing set of 200 beach profiles.
 
-![pybeach-test-figure](docs/img/figure_3.png) *__*Fig. 3*__: Boxplot of pybeach results on 200 test beach profiles.
+![pybeach-test-figure](docs/img/figure_3.png) *__*Figure 3*__: Boxplot of pybeach results on 200 test beach profiles.*
+
+
+*__*Table 1*__: Mean absolute error (MAE), root-mean-squared-error (RMSE), and r-squared (R2) of the four dune toe detection algorithms in pybeach applied to the 200 test profiles.*
 
 |    |   MAE |   RMSE |   R2 |
 |:---|------:|-------:|-----:|
