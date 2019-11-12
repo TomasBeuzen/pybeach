@@ -57,7 +57,8 @@ errors and interpreting beach morphology. Importantly, the methodology used to c
 ML model here (described in Section [pybeach](#pybeach)) is an example of how ML can be more
 generally applied to geomorphic and Earth surface systems.
 
-![pybeach-example-figure](docs/img/figure_1.png) *__*Figure 1*__: Example applications of pybeach.*
+![pybeach-example-figure](docs/img/figure_1.png)
+__*Figure 1*__: *Example applications of pybeach.*
 
 # Statement of Need
 
@@ -145,7 +146,11 @@ profile used for model training, in addition to the one positive sample (i.e., t
 around the true dune toe), a single negative sample is also randomly extracted, resulting in equal
 numbers of positive and negative dune toe windows for model training.
 
-![pybeach-methodology-figure](docs/img/figure_2.png) *__*Figure 2*__: Example of "positive" and
+<p align="center">
+  <img src="docs/img/figure_2.png">
+</p>
+
+__*Figure 2*__: *Example of "positive" and
 "negative" dune toe windows used to train the ML models in pybeach. (a) shows the raw beach profile
 data with the "positive" dune toe window and location marked in green and a randomly selected
 "negative" dune toe window and location markined in red. (b) shows the gradient (first differential)
@@ -175,7 +180,11 @@ repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.i
 seen that the ML model consdierably outperforms the other dune toe location algorithms for this
 testing set of 200 beach profiles.
 
-![pybeach-test-figure](docs/img/figure_3.png) *__*Figure 3*__: Boxplot of pybeach results on 200 test beach profiles.*
+<p align="center">
+  <img src="docs/img/figure_3.png">
+</p>
+
+__*Figure 3*__: *Boxplot of pybeach results on 200 test beach profiles.*
 
 
 *__*Table 1*__: Mean absolute error (MAE), root-mean-squared-error (RMSE), and r-squared (R2) of the four dune toe detection algorithms in pybeach applied to the 200 test profiles.*
