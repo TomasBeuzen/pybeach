@@ -146,9 +146,7 @@ profile used for model training, in addition to the one positive sample (i.e., t
 around the true dune toe), a single negative sample is also randomly extracted, resulting in equal
 numbers of positive and negative dune toe windows for model training.
 
-<p align="center">
-  <img src="docs/img/figure_2.png">
-</p>
+![pybeach-methodology-figure](docs/img/figure_2.png)
 
 __*Figure 2*__: *Example of "positive" and
 "negative" dune toe windows used to train the ML models in pybeach. (a) shows the raw beach profile
@@ -180,9 +178,7 @@ repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.i
 seen that the ML model consdierably outperforms the other dune toe location algorithms for this
 testing set of 200 beach profiles.
 
-<p align="center">
-  <img src="docs/img/figure_3.png">
-</p>
+![pybeach-test-figure](docs/img/figure_3.png)
 
 __*Figure 3*__: *Boxplot of pybeach results on 200 test beach profiles.*
 
