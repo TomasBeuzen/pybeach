@@ -48,6 +48,15 @@ See the [example notebook](https://github.com/TomasBeuzen/pybeach/blob/master/ex
 ## Documentation
 Read the **pybeach** documentation [here](https://pybeach.readthedocs.io/en/latest/).
 
+## Dependencies
+A list of **pybeach** dependencies can be found in [pyproject.toml](https://github.com/TomasBeuzen/pybeach/blob/master/pyproject.toml). Currently, **pybeach** depends on the following:
+- python = "^3.7"
+- numpy = "1.17.2"
+- scipy = "1.3.1"
+- pandas = "0.25.1"
+- scikit-learn = "0.21.2"
+- joblib = "0.13.2"
+
 ## Questions, Comments, Suggestions
 Do you have a question that needs answering? Have you found an issue with the code and need to get it fixed? Or perhaps you're looking to contribute to the code and have ideas for how it could be improved. In all cases, please see the [Issues](https://github.com/TomasBeuzen/pybeach/issues) page.
 
