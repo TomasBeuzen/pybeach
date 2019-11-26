@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/TomasBeuzen/pybeach.svg?branch=master)](https://travis-ci.org/TomasBeuzen/pybeach)
 [![Documentation Status](https://readthedocs.org/projects/pybeach/badge/?version=latest)](https://pybeach.readthedocs.io/en/latest/?badge=latest)
 [![Coverage Status](https://coveralls.io/repos/github/TomasBeuzen/pybeach/badge.svg?branch=master&service=github)](https://coveralls.io/github/TomasBeuzen/pybeach?branch=master)
+[![status](https://joss.theoj.org/papers/8b211e45c6919ea8057946484e757c28/status.svg)](https://joss.theoj.org/papers/8b211e45c6919ea8057946484e757c28)
 
 # **pybeach**: A Python package for locating the dune toe on cross-shore beach profile transects.
 
@@ -42,10 +43,10 @@ crest = p.predict_dunecrest()      # predict dune crest
 shoreline = p.predict_shoreline()  # predict shoreline
 ```
 
-See the [example notebook](https://github.com/TomasBeuzen/pybeach/blob/master/example.ipynb) for more details.
+See the [example notebook](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb) for more details.
 
 ## Documentation
-Read the **pybeach** documentation [here](https://pybeach-tomasbeuzen.readthedocs.io/en/latest/?badge=latest).
+Read the **pybeach** documentation [here](https://pybeach.readthedocs.io/en/latest/).
 
 ## Questions, Comments, Suggestions
 Do you have a question that needs answering? Have you found an issue with the code and need to get it fixed? Or perhaps you're looking to contribute to the code and have ideas for how it could be improved. In all cases, please see the [Issues](https://github.com/TomasBeuzen/pybeach/issues) page.
