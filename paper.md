@@ -125,8 +125,8 @@ methodology for creating these models is described briefly below and is demonstr
 Jupyter notebook contained within the __*pybeach*__ [GitHub
 repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb).
 
-For each dataset described above, the dune toe location was manually identified by an expert to
-facilitate the creation of the ML models. As beach profile transects can vary significantly in
+For each dataset described above, the true location of the dune toe on each indiviudal profile transect was manually identified and quality checked by *multiple* experts and verified using satelitte imagery, digital elevation models and/or in-situ observations where available. This resulted in the best possible data to
+facilitate the creation of the ML models in __*pybeach*__. As beach profile transects can vary significantly in
 length (i.e., from 10’s of meters to 100’s of meters), the ML models developed here were created
 using fixed lengths of transect (hereafter referred to as a “window”) instead of an entire transect
 (**Figure 2a**). Given a window, the aim of the ML model is to predict the probability of a dune toe
