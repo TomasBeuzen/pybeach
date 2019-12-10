@@ -19,7 +19,7 @@ bibliography: paper.bib
 
 # Summary
 
-Sandy coastlines typically comprise two key parts: a beach and dune. The beach is the section of sandy coast that is mostly above water (depending upon tide) and actively influenced by waves, while dunes are elevated mounds or ridges of sand at the back of the beach. The interface between the beach and dune is often characterised by a distinct change in ground slope (with the dune having a steeper slope than the beach). Dunes are particularly important along sandy coastlines because they provide an natural barrier to coastal hazards such as
+Sandy coastlines typically comprise two key parts: a beach and dune. The beach is the section of sandy coast that is mostly above water (depending upon tide) and actively influenced by waves, while dunes are elevated mounds/ridges of sand at the back of the beach. The interface between the beach and dune is often characterised by a distinct change in ground slope (with the dune having a steeper slope than the beach). Dunes are particularly important along sandy coastlines because they provide an natural barrier to coastal hazards such as
 storm-induced waves and surge. The capacity of sandy dunes to provide coastal hazard protection
 depends in large part on their geometry. In particular, the location of the dune toe (the transition
 point between the beach and dune) is a key factor used in coastal erosion models and for assessing
