@@ -19,7 +19,7 @@ bibliography: paper.bib
 
 # Summary
 
-Dunes along sandy coastlines provide an important natural barrier to coastal hazards such as
+Sandy coastlines typically comprise two key parts: a beach and dune. The beach is the section of sandy coast that is mostly above water (depending upon tide) and actively influenced by waves, while dunes are elevated mounds or ridges of sand at the back of the beach. The interface between the beach and dune is often characterised by a distinct change in ground slope (with the dune having a steeper slope than the beach). Dunes are particularly important along sandy coastlines because they provide an natural barrier to coastal hazards such as
 storm-induced waves and surge. The capacity of sandy dunes to provide coastal hazard protection
 depends in large part on their geometry. In particular, the location of the dune toe (the transition
 point between the beach and dune) is a key factor used in coastal erosion models and for assessing
@@ -43,7 +43,7 @@ following methods:
    of local morphology to computational scale);
 3. Perpendicular distance - the dune toe is defined as the point of maximum perpendicular distance
    from the straight line drawn between the dune crest and shoreline; and,
-4. Machine learning - discussed further below.
+4. Machine learning using Random Forest classification - discussed further below.
 
 **Figure 1** shows examples of __*pybeach*__ applied to different beach profile transects. The machine
 learning (ML) approach to identifying the location of the dune toe is novel and aims to address some
@@ -120,8 +120,8 @@ the __*pybeach*__ package:
 3. a "mixed" model. Developed using a combination of the two above datasets.
 
 In addition to these three pre-trained ML models, the function *create_classifier()* in the
-*classifier_support.py* module, allows users to create a custom ML model from other data. The
-methodology for creating these models is described briefly below and is demonstrated in the example
+*classifier_support.py* module, allows users to create a custom ML model from their own data. As described below, the ML models provided in __*pybeach*__ are based on Random Forest classification and the *create_classifier()* function will create models based on this algorithm by default. However, __*pybeach*__ supports ML models developed using any scikit-learn classifier that supports probabilistic prediction (e.g., kNN, logistic regression, support vector classifier, etc.). The
+methodology for creating a model is described briefly below and is demonstrated in the example
 Jupyter notebook contained within the __*pybeach*__ [GitHub
 repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb).
 
@@ -149,7 +149,7 @@ numbers of positive and negative dune toe windows for model training.
 
 The "windows" are simply vectors of elevation change (the features), symmetrically centered around a
 dune toe (positive sample, given a class label of 1) or some other random location that is not a
-dune toe (negative sample, given a class label of 0). The scikit-learn random forest classifier
+dune toe (negative sample, given a class label of 0). The scikit-learn Random Forest classifier
 algorithm was used to develop the __*pybeach*__ ML models using these features and class labels,
 with an ensemble of 100 trees and no maximum depth. While different algorithms were trialled, the
 random forest classifier gave the highest accuracy during 10-fold cross-validation testing. In
@@ -160,6 +160,8 @@ methodology discussed above are the window size and buffer size. During model de
 cross-validation grid search was conducted over different values of these two parameters, and a
 window size of 20 m and buffer size of 20 m were found to be optimal. However, users may adjust
 these parameters when generating their own models.
+
+### Performance Assessment
 
 To test the performance of the dune toe location algorithms in __*pybeach*__, 200 profiles were
 reserved as testing data and were not at all involved in ML model development. These profiles are
@@ -236,10 +238,9 @@ models) as well as adding new classes for the calculation of commonly used hydro
 # Acknowledgements
 
 I would like to thank those that contributed to the collection and processing of data used to
-develop the ML models in __*pybeach*__. In particular, Dr. Mitchell Harley, Prof. Jason H. Middleton
-and Peter J. Mumford from the UNSW School of Aviation for conducting the Airborne Lidar surveys and
+develop the ML models in __*pybeach*__. In particular, Dr. Mitchell Harley, Prof. Jason H. Middleton, Peter J. Mumford, and the UNSW School of Aviation for conducting the Airborne Lidar surveys and
 Lidar data pre- processing for the June 2016 storm, and Dr. Kara Doran, Dr. Nathaniel
-Plant, Dr. Hilary Stockdon and the USGS for providing the Hurricane Ivan Lidar data, available
+Plant, Dr. Hilary Stockdon, and the USGS for providing the Hurricane Ivan Lidar data, available
 online [here](https://coastal.er.usgs.gov/data-release/doi-F7GF0S0Z/).
 
 # References
