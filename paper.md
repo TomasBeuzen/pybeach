@@ -116,7 +116,7 @@ the __*pybeach*__ package:
    described in [@Doran2018]);
 2. a "wave-embayed" model. This model was developed using 1768 pre- and post- "June 2016 storm"
    airborne LIDAR profiles from the wave-dominated, embayed southeast Australian coastline (this
-   data was collected in 2016 and is described in [Harley2017]).
+   data was collected in 2016 and is described in [@Harley2017]).
 3. a "mixed" model. Developed using a combination of the two above datasets.
 
 In addition to these three pre-trained ML models, the function *create_classifier()* in the
