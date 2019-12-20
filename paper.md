@@ -149,7 +149,7 @@ numbers of positive and negative dune toe windows for model training.
 
 The "windows" are simply vectors of elevation change (the features), symmetrically centered around a
 dune toe (positive sample, given a class label of 1) or some other random location that is not a
-dune toe (negative sample, given a class label of 0). The scikit-learn Random Forest classifier
+dune toe (negative sample, given a class label of 0). The scikit-learn [@sklearn2011] Random Forest classifier
 algorithm was used to develop the __*pybeach*__ ML models using these features and class labels,
 with an ensemble of 100 trees and no maximum depth. While different algorithms were trialled, the
 random forest classifier gave the highest accuracy during 10-fold cross-validation testing. In
