@@ -170,7 +170,7 @@ repository](https://github.com/TomasBeuzen/pybeach/tree/master/example). Figure 
 the performance of the different dune toe detection algorithms (ML, MC, RR, PD) and can be
 reproduced using the example Jupyter notebook contained within the __*pybeach*__ [GitHub
 repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb). It can be
-seen that the ML model consdierably outperforms the other dune toe location algorithms for this
+seen that the ML model considerably outperforms the other dune toe location algorithms for this
 testing set of 200 beach profiles.
 
 ![Boxplot of pybeach results on 200 test beach profiles.](docs/img/figure_3.png)
