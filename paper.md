@@ -120,7 +120,7 @@ the __*pybeach*__ package:
 3. a "mixed" model. Developed using a combination of the two above datasets.
 
 In addition to these three pre-trained ML models, the function *create_classifier()* in the
-*classifier_support.py* module, allows users to create a custom ML model from their own data. As described below, the ML models provided in __*pybeach*__ are based on Random Forest classification and the *create_classifier()* function will create models based on this algorithm by default. However, __*pybeach*__ supports ML models developed using any scikit-learn classifier that supports probabilistic prediction (e.g., kNN, logistic regression, support vector classifier, etc.). The
+*classifier_support.py* module, allows users to create a custom ML model from their own data. As described below, the ML models provided in __*pybeach*__ are based on Random Forest classification and the *create_classifier()* function will create models based on this algorithm by default using the scikit-learn library [@sklearn2011]. However, __*pybeach*__ supports ML models developed using any scikit-learn classifier that supports probabilistic prediction (e.g., kNN, logistic regression, support vector classifier, etc.). The
 methodology for creating a model is described briefly below and is demonstrated in the example
 Jupyter notebook contained within the __*pybeach*__ [GitHub
 repository](https://github.com/TomasBeuzen/pybeach/blob/master/example/example.ipynb).
