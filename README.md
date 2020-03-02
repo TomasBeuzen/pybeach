@@ -20,6 +20,10 @@
   
 In addition, **pybeach** contains methods for identifying the shoreline position and dune crest position on 2D beach profile transects. See the [*pybeach* paper](paper.md) for more details about **pybeach**.
 
+## Installation
+
+`pip install pybeach`
+
 ## Usage
 ```python
 from pybeach.beach import Profile
