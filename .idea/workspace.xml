@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feb0eac3-016c-4e71-8f51-121f011d2609" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/example/example.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pydune/beach.py" beforeDir="false" afterPath="$PROJECT_DIR$/pydune/beach.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,29 +20,23 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Rlw5L9owxdi4WtJ5WEpVbokjkK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.test_pydune">
     <configuration name="test_pydune" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -190,10 +179,14 @@
       </map>
     </option>
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pydune$test_script.coverage" NAME="test_script Coverage Results" MODIFIED="1571274277513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/pydune$test_pydune.coverage" NAME="test_pydune Coverage Results" MODIFIED="1571285305788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/pydune$Unittests_for_test_pydune_Testpydune.coverage" NAME="Unittests for test_pydune.Testpydune Coverage Results" MODIFIED="1571112007871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/pydune$Unittests_for_test_pydune_Testpydune_test_predict_dunetoe_ml.coverage" NAME="Unittests for test_pydune.Testpydune.test_predict_dunetoe_ml Coverage Results" MODIFIED="1571079502160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+  <component name="WindowStateProjectService">
+    <state x="229" y="66" key="SettingsEditor" timestamp="1581606640116">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="229" y="66" key="SettingsEditor/0.23.1440.809@0.23.1440.809" timestamp="1581606640116" />
+    <state x="376" y="262" key="com.intellij.ide.util.TipDialog" timestamp="1581606906807">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="376" y="262" key="com.intellij.ide.util.TipDialog/0.23.1440.809@0.23.1440.809" timestamp="1581606906807" />
   </component>
 </project>

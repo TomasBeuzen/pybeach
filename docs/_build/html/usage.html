@@ -7,11 +7,11 @@
     <title>Usage &#8212; pybeach 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Help" href="help.html" />
@@ -71,7 +71,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="documentwrapper">
@@ -82,13 +82,13 @@
             
   <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
-<p>First import the <code class="docutils literal notranslate"><span class="pre">Profile</span></code> class of <strong>pydune</strong>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydune</span> <span class="kn">import</span> <span class="n">Profile</span>
+<p>First import the <code class="docutils literal notranslate"><span class="pre">Profile</span></code> class of <strong>pybeach</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pybeach</span> <span class="kn">import</span> <span class="n">Profile</span>
 </pre></div>
 </div>
-<p>Given an array of cross-shore coordinates, __*x*__ of shape (<em>m</em>,) and corresponding elevations __*z*__ of shape (<em>m</em>,) for a single profile or shape (<em>m</em>, <em>n</em>) for <em>n</em> profiles, <cite>pydune</cite> can be used as follows to make predictions of the dune toe location:</p>
+<p>Given an array of cross-shore coordinates, <em>x</em> of shape (<em>m</em>,) and corresponding elevations <em>z</em> of shape (<em>m</em>,) for a single profile or shape (<em>m</em>, <em>n</em>) for <em>n</em> profiles, <cite>pybeach</cite> can be used as follows to make predictions of the dune toe location:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example data</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
                     <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
@@ -96,17 +96,17 @@
                     <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)))</span>
 
 <span class="c1"># Instantiate Profile class</span>
-<span class="n">pyd</span> <span class="o">=</span> <span class="n">Profile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Profile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 
 <span class="c1"># Predict dune toe location</span>
-<span class="n">toe_ml</span> <span class="o">=</span> <span class="n">pyd</span><span class="o">.</span><span class="n">predict_dunetoe_ml</span><span class="p">(</span><span class="s1">&#39;wave_embayed_clf&#39;</span><span class="p">)</span> <span class="c1"># use the machine learning (ML) method</span>
-<span class="n">toe_mc</span> <span class="o">=</span> <span class="n">pyd</span><span class="o">.</span><span class="n">predict_dunetoe_mc</span><span class="p">()</span> <span class="c1"># use the maximum curvature (MC) method</span>
-<span class="n">toe_rr</span> <span class="o">=</span> <span class="n">pyd</span><span class="o">.</span><span class="n">predict_dunetoe_rr</span><span class="p">()</span> <span class="c1"># use the relative relief (RR) method</span>
-<span class="n">toe_pd</span> <span class="o">=</span> <span class="n">pyd</span><span class="o">.</span><span class="n">predict_dunetoe_pd</span><span class="p">()</span> <span class="c1"># use the perpendicular distance (PD) method</span>
+<span class="n">toe_ml</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_dunetoe_ml</span><span class="p">(</span><span class="s1">&#39;mixed_clf&#39;</span><span class="p">)</span> <span class="c1"># use the machine learning (ML) method</span>
+<span class="n">toe_mc</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_dunetoe_mc</span><span class="p">()</span> <span class="c1"># use the maximum curvature (MC) method</span>
+<span class="n">toe_rr</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_dunetoe_rr</span><span class="p">()</span> <span class="c1"># use the relative relief (RR) method</span>
+<span class="n">toe_pd</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_dunetoe_pd</span><span class="p">()</span> <span class="c1"># use the perpendicular distance (PD) method</span>
 
 <span class="c1"># (optional) Predict shoreline and dune crest location</span>
-<span class="n">crest</span> <span class="o">=</span> <span class="n">pyd</span><span class="o">.</span><span class="n">predict_dunecrest</span><span class="p">()</span>
-<span class="n">shoreline</span> <span class="o">=</span> <span class="n">pyd</span><span class="o">.</span><span class="n">predict_shoreline</span><span class="p">()</span>
+<span class="n">crest</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_dunecrest</span><span class="p">()</span>
+<span class="n">shoreline</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_shoreline</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -122,7 +122,7 @@
       &copy;2019, Tomas Beuzen.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

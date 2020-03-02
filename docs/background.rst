@@ -1,22 +1,22 @@
 Background
 ----------
 
-Dunes along sandy coastlines provide an important natural barrier to coastal hazards such as storm-induced waves and surge. The capacity of sandy dunes to provide coastal hazard protection depends in large part on their geometry. In particular, the location of the dune toe (the transition point between the beach and dune) is a key factor used in coastal erosion models and for assessing coastal vulnerability to hazards. **pydune** is a Python package for locating the dune toe on cross-shore beach profile transects. The aim of *pydune* is to collate commonly used algorithms for dune toe identification and to provide a new method of locating the dune toe based on machine learning.
+Dunes along sandy coastlines provide an important natural barrier to coastal hazards such as storm-induced waves and surge. The capacity of sandy dunes to provide coastal hazard protection depends in large part on their geometry. In particular, the location of the dune toe (the transition point between the beach and dune) is a key factor used in coastal erosion models and for assessing coastal vulnerability to hazards. **pybeach** is a Python package for locating the dune toe on cross-shore beach profile transects. The aim of *pybeach* is to collate commonly used algorithms for dune toe identification and to provide a new method of locating the dune toe based on machine learning.
 
-**pydune** currently includes the following methods for locating the dune toe on a cross-shore beach profile:
+**pybeach** currently includes the following methods for locating the dune toe on a cross-shore beach profile:
     - Machine learning;
     - Maximum curvature (Stockdon et al, 2007) [#sto07]_;
     - Relative relief (Wernette et al, 2016) [#wer16]_; and,
     - Perpendicular distance.
 
-See the **pydune** paper_ for more details of these methods.
+See the **pybeach** paper_ for more details of these methods.
 
-.. _paper: https://github.com/TomasBeuzen/pydune/blob/master/paper.md
+.. _paper: https://github.com/TomasBeuzen/pybeach/blob/master/paper.md
 
 .. image:: ./_static/figure_1.png
 ..
 
-    | Example application of **pydune**.
+    | Example application of **pybeach**.
 
 --------
 
