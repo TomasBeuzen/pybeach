@@ -12,7 +12,7 @@
 </div>
 
 ## Background
-**pybeach** is a python package for identifying dune toes on 2D beach profile transects. It includes the following methods:
+**pybeach** is a Python package for identifying dune toes on 2D beach profile transects. It includes the following methods:
   - Machine learning; 
   - Maximum curvature (Stockdon et al, 2007); 
   - Relative relief (Wernette et al, 2016); and,
