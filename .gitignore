@@ -1,4 +1,5 @@
 # ignore
+.gitignore
 /dist
 /data
 /docs/img/figure-data

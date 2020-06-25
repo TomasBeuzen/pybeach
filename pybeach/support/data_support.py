@@ -31,10 +31,9 @@ def interp_nan(x, z):
         Interpolated z.
 
     """
-    z_interp = np.array([np.interp(x,
-                                   x[~np.isnan(row)],
-                                   row[~np.isnan(row)]
-                                   ) for row in z])
+    z_interp = np.array(
+        [np.interp(x, x[~np.isnan(row)], row[~np.isnan(row)]) for row in z]
+    )
     return z_interp
 
 
@@ -61,10 +60,7 @@ def interp_to_grid(x, x_interp, z):
         z interpolated to 0.5m cross-shore spacing.
 
     """
-    z_interp = np.array([np.interp(x_interp,
-                                   x,
-                                   row
-                                   ) for row in z])
+    z_interp = np.array([np.interp(x_interp, x, row) for row in z])
     return z_interp
 
 
@@ -89,8 +85,7 @@ def interp_toe_to_grid(x, x_interp, toe):
         toe interpolated to x_interp.
 
     """
-    toe_interp = np.array([np.abs(x_interp - x[_]).argmin()
-                           for _ in toe])
+    toe_interp = np.array([np.abs(x_interp - x[_]).argmin() for _ in toe])
 
     return toe_interp
 
@@ -114,16 +109,24 @@ def moving_average(z, window_size=5):
         z smoothed.
 
     """
-    assert isinstance(window_size, int) & \
-           (window_size > 0) & \
-           (window_size < z.shape[1]), f'window_size must be int between 0 and {z.shape[1]}.'
+    assert (
+        isinstance(window_size, int) & (window_size > 0) & (window_size < z.shape[1])
+    ), f"window_size must be int between 0 and {z.shape[1]}."
 
-    z_smooth = np.array([np.convolve(np.pad(row,
-                                            (window_size//2, window_size-1-window_size//2),
-                                            mode='edge'),
-                                     np.ones((window_size,))/window_size,
-                                     mode='valid')
-                         for row in z])
+    z_smooth = np.array(
+        [
+            np.convolve(
+                np.pad(
+                    row,
+                    (window_size // 2, window_size - 1 - window_size // 2),
+                    mode="edge",
+                ),
+                np.ones((window_size,)) / window_size,
+                mode="valid",
+            )
+            for row in z
+        ]
+    )
     return z_smooth
 
 
@@ -146,11 +149,7 @@ def diff_data(z, diff_order=1):
         z differentiated.
 
     """
-    z_diff = np.array([np.pad(np.diff(row,
-                                      diff_order),
-                              (0, 1),
-                              'edge')
-                       for row in z])
+    z_diff = np.array([np.pad(np.diff(row, diff_order), (0, 1), "edge") for row in z])
     return z_diff
 
 
@@ -174,10 +173,12 @@ def rolling_samples(z, window_size):
         Samples from z.
 
     """
-    z = np.pad(z,
-               (window_size//2, window_size-1-window_size//2),
-               mode='constant',
-               constant_values=0)  # pad to catch end points
+    z = np.pad(
+        z,
+        (window_size // 2, window_size - 1 - window_size // 2),
+        mode="constant",
+        constant_values=0,
+    )  # pad to catch end points
     shape = z.shape[:-1] + (z.shape[-1] - window_size + 1, window_size)
     strides = z.strides + (z.strides[-1],)
     z_samples = np.lib.stride_tricks.as_strided(z, shape=shape, strides=strides)
