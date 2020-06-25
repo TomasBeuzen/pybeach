@@ -24,6 +24,9 @@ Welcome to pybeach's documentation!
 .. image:: https://badge.fury.io/py/pybeach.svg
     :alt: PyPi
 
+.. image:: https://github.com/TomasBeuzen/pybeach/workflows/build/badge.svg?branch=master
+    :alt: Build
+
 **pybeach** is a Python package for locating the dune toe on cross-shore beach profile transects. 
 
 .. image:: ./_static/figure_1.png
