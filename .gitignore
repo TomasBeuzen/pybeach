@@ -1,5 +1,6 @@
 # ignore
 .gitignore
+.coverage*
 /dist
 /data
 /docs/img/figure-data

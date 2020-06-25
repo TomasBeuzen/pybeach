@@ -4,6 +4,7 @@
 [![codecov](https://codecov.io/gh/TomasBeuzen/pybeach/branch/master/graph/badge.svg)](https://codecov.io/gh/TomasBeuzen/pybeach)
 [![status](https://joss.theoj.org/papers/8b211e45c6919ea8057946484e757c28/status.svg)](https://joss.theoj.org/papers/8b211e45c6919ea8057946484e757c28)
 [![PyPI version](https://badge.fury.io/py/pybeach.svg)](https://badge.fury.io/py/pybeach)
+![build](https://github.com/TomasBeuzen/pybeach/workflows/build/badge.svg?branch=master)
 
 # **pybeach**: A Python package for locating the dune toe on cross-shore beach profile transects.
 
