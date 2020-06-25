@@ -1,17 +1,28 @@
 Welcome to pybeach's documentation!
 ===================================
 
-.. image:: https://travis-ci.org/TomasBeuzen/pybeach.svg?branch=master
-    :target: https://travis-ci.org/TomasBeuzen/pybeach
-    :alt: Build Status
+.. image:: https://www.repostatus.org/badges/latest/active.svg
+   :alt: Project Status: Active – The project has reached a stable, usable state and is being actively developed.
+   :target: https://www.repostatus.org/#active
+
+.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
+    :target: https://opensource.org/licenses/MIT
+    :alt: License
 
 .. image:: https://readthedocs.org/projects/pybeach/badge/?version=latest
     :target: https://pybeach.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://coveralls.io/repos/github/TomasBeuzen/pybeach/badge.svg?branch=master
-    :target: https://coveralls.io/github/TomasBeuzen/pybeach?branch=master
-    :alt: Coverage
+.. image:: https://codecov.io/gh/TomasBeuzen/pybeach/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/TomasBeuzen/pybeach
+    :alt: Code Coverage
+
+.. image:: https://joss.theoj.org/papers/8b211e45c6919ea8057946484e757c28/status.svg
+    :target: https://joss.theoj.org/papers/8b211e45c6919ea8057946484e757c28
+    :alt: JOSS
+
+.. image:: https://badge.fury.io/py/pybeach.svg
+    :alt: PyPi
 
 **pybeach** is a Python package for locating the dune toe on cross-shore beach profile transects. 
 
