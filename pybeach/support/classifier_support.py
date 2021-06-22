@@ -24,7 +24,7 @@ def create_classifier(x, z, toe, window=40, min_buffer=40, max_buffer=200):
     x : ndarray
         Array of cross-shore locations of size (m,).
     z : ndarray
-        Array of elevations matching x. May be of size (m,) or (m,n).
+        Array of elevations matching x. May be of size (m,) or (n,m).
     toe : ndarray
         Array of dune toe locations of size (n,).
     window : int, default 40
