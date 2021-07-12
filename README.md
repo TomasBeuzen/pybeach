@@ -6,6 +6,8 @@
 [![PyPI version](https://badge.fury.io/py/pybeach.svg)](https://badge.fury.io/py/pybeach)
 ![build](https://github.com/TomasBeuzen/pybeach/workflows/build/badge.svg?branch=master)
 
+>As of 2021 this repo is currently not actively maintained. I do hope to make time for it in the future as there's lots of room for improvement - PRs welcome any time.
+
 # **pybeach**: A Python package for locating the dune toe on cross-shore beach profile transects.
 
 <div align="center">
