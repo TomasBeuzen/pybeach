@@ -4,7 +4,7 @@ Pybeach test
 """
 
 import numpy as np
-from sklearn.ensemble.forest import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 from pybeach import __version__
 from pytest import approx, raises, fixture
 from pybeach.beach import Profile
@@ -12,7 +12,7 @@ from pybeach.support import classifier_support as cs
 
 
 def test_version():
-    assert __version__ == "0.1.2"
+    assert __version__ == "0.1.3"
 
 
 @fixture()

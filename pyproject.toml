@@ -1,30 +1,23 @@
 [tool.poetry]
 name = "pybeach"
-version = "0.1.2"
+version = "0.1.3"
 description = "A Python package for locating the dune toe on cross-shore beach profile transects."
-authors = ["Tomas Beuzen <tomas.beuzen@gmail.com>"]
+authors = ["Tomas Beuzen"]
 license = "MIT"
-readme = "README.md"
-homepage = "https://github.com/TomasBeuzen/pybeach"
-repository = "https://github.com/TomasBeuzen/pybeach"
-documentation = 'https://pybeach.readthedocs.io'
-keywords = ["coastal", "dune", "dune toe", "beach", "machine learning"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-numpy = "1.17.2"
-scipy = "1.3.1"
-pandas = "0.25.1"
-scikit-learn = "0.21.2"
-joblib = "0.13.2"
+python = "^3.8"
+scikit-learn = "^0.24.2"
+joblib = "^1.0.1"
+pandas = "^1.3.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
-pytest-cov = "^2.7"
-sphinx = "^2.4.3"
-flake8 = "^3.8.3"
-black = "^19.10b0"
+pytest = "^6.2.4"
+pytest-cov = "^2.12.1"
+Sphinx = "^4.1.0"
+flake8 = "^3.9.2"
+black = "^21.6b0"
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
